@@ -2,9 +2,12 @@ package com.example.musicin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 
+import com.google.android.material.button.MaterialButton;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
 
@@ -42,6 +45,14 @@ public class MainActivity extends AppCompatActivity {
         ));
 
         carousel.setData(list);
+
+        MaterialButton login_bttn = findViewById(R.id.login_btt);
+        login_bttn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            }
+        });
 
     }
 }
