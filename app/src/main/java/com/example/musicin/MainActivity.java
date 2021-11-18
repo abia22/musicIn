@@ -1,0 +1,47 @@
+package com.example.musicin;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.widget.ImageView;
+
+import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageListener;
+
+import org.imaginativeworld.whynotimagecarousel.ImageCarousel;
+import org.imaginativeworld.whynotimagecarousel.model.CarouselItem;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        ImageCarousel carousel = findViewById(R.id.carousel);
+        carousel.registerLifecycle(getLifecycle());
+
+        List<CarouselItem> list = new ArrayList<>();
+
+        list.add( new CarouselItem(
+                "https://www.allbusiness.com/asset/2019/01/Music-Band-rehearsing.jpg",
+                 "Form a band with other users"
+        ));
+
+        list.add( new CarouselItem(
+                "https://media.istockphoto.com/photos/crowd-on-a-music-festival-picture-id1191818259?k=20&m=1191818259&s=612x612&w=0&h=jGCzUvIdF65oa0SaT8Vmdvc_YpnyR5ROOMZb_FuoPYM=",
+                 "Find shows to play at"
+        ));
+
+        list.add( new CarouselItem(
+                "https://apexsoundandlight.ca/files/images/products/manufacturers/martin-professional-lighting.jpg",
+                 "Give a hand on the backstage"
+        ));
+
+        carousel.setData(list);
+
+    }
+}
