@@ -13,5 +13,12 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="not_registered_yet">Not registered yet?</string>
-    <string name="sing_up">Sing Up</string>
+    <string name="choose_your_type">Choose your type</string>
+    <string name="next">Next</string>
+    <string name="individual">Individual</string>
+    <string name="enterprise">Enterprise</string>
+    <string name="musician">Musician</string>
+    <string name="technician">Technician</string>
+    <string name="name">Name</string>
+    <string name="instruments">Instruments</string>
 </resources>
