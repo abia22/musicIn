@@ -70,7 +70,9 @@ public class SelectIndEntActivity extends AppCompatActivity {
                 if(selected == INDIVIDUAL){
                     startActivity(new Intent(SelectIndEntActivity.this, MusicianSignInActivity.class));
                 }
-                //TODO: GO TO ENTERPRISE ACTIVITY
+                if(selected == ENTERPRISE){
+                    startActivity(new Intent(SelectIndEntActivity.this,EnterpriseSignInActivity.class));
+                }
             }
         });
 
