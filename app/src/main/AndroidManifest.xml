@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MusicIn">
         <activity
+            android:name=".MusicianEmailPwdSignInActivity"
+            android:exported="false" />
+        <activity
             android:name=".MusicianSignInActivity"
             android:exported="true" />
         <activity

@@ -69,7 +69,7 @@ public class SelectMusTecActivity extends AppCompatActivity {
                 if(selected == MUSICIAN){
                     startActivity(new Intent(SelectMusTecActivity.this, MusicianSignInActivity.class));
                 }
-                //TODO: GO TO NEXT ACTIVITY
+
             }
         });
     }
