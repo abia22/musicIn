@@ -18,9 +18,6 @@
             android:name=".MusicianSignInActivity"
             android:exported="true" />
         <activity
-            android:name=".SelectMusTecActivity"
-            android:exported="true" />
-        <activity
             android:name=".SelectIndEntActivity"
             android:exported="true" />
         <activity

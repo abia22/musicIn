@@ -21,7 +21,9 @@
     <string name="technician">Technician</string>
     <string name="name">Name</string>
     <string name="instruments">Instruments</string>
-    <string name="age">Age</string>
-    <string name="genre">Favourite Genres</string>
+    <string name="error_password">Password can\'t be less than 8 characters</string>
     <string name="favourite_artists">Favourite Artists</string>
+    <string name="age">Age</string>
+    <string name="genre">Genre</string>
+
 </resources>

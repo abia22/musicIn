@@ -21,24 +21,24 @@ public class SelectIndEntActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_ind_ent);
 
-        ImageView individual = findViewById(R.id.individual_img);
+        ImageView musician = findViewById(R.id.musician_img);
         ImageView enterprise = findViewById(R.id.enterprise_img);
         MaterialButton next_bttn = findViewById(R.id.next_bttn);
 
-        individual.setBackgroundResource(0);
+        musician.setBackgroundResource(0);
         enterprise.setBackgroundResource(0);
         next_bttn.setEnabled(false);
 
 
-        individual.setOnClickListener(new View.OnClickListener() {
+        musician.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                if (selected == INDIVIDUAL){
-                   individual.setBackgroundResource(0);
+                   musician.setBackgroundResource(0);
                    next_bttn.setEnabled(false);
                    selected = -1;
                } else {
-                   individual.setBackgroundResource(R.drawable.border);
+                   musician.setBackgroundResource(R.drawable.border);
                    enterprise.setBackgroundResource(0);
                    selected = INDIVIDUAL;
                    next_bttn.setEnabled(true);
@@ -56,7 +56,7 @@ public class SelectIndEntActivity extends AppCompatActivity {
                     selected = -1;
                 }else{
                     enterprise.setBackgroundResource(R.drawable.border);
-                    individual.setBackgroundResource(0);
+                    musician.setBackgroundResource(0);
                     selected = ENTERPRISE;
                     next_bttn.setEnabled(true);
                 }
@@ -68,7 +68,7 @@ public class SelectIndEntActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(selected == INDIVIDUAL){
-                    startActivity(new Intent(SelectIndEntActivity.this, SelectMusTecActivity.class));
+                    startActivity(new Intent(SelectIndEntActivity.this, MusicianSignInActivity.class));
                 }
                 //TODO: GO TO ENTERPRISE ACTIVITY
             }

@@ -35,7 +35,7 @@
         android:src="@drawable/businessman"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.521"
-        app:layout_constraintStart_toEndOf="@+id/individual_img"
+        app:layout_constraintStart_toEndOf="@+id/musician_img"
         app:layout_constraintTop_toBottomOf="@+id/choose_type_txt" />
 
     <TextView
@@ -53,7 +53,7 @@
         app:layout_constraintVertical_bias="0.13" />
 
     <ImageView
-        android:id="@+id/individual_img"
+        android:id="@+id/musician_img"
         android:layout_width="160dp"
         android:layout_height="200dp"
         android:layout_marginStart="20dp"
@@ -61,23 +61,23 @@
         android:background="@drawable/border"
         android:cropToPadding="true"
         android:padding="5dp"
-        android:src="@drawable/individual"
+        android:src="@drawable/musician"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/choose_type_txt" />
 
     <TextView
-        android:id="@+id/individual_txt"
+        android:id="@+id/musician_txt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/individual"
+        android:text="@string/musician"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/individual_img"
-        app:layout_constraintStart_toStartOf="@+id/individual_img"
-        app:layout_constraintTop_toBottomOf="@+id/individual_img" />
+        app:layout_constraintEnd_toEndOf="@+id/musician_img"
+        app:layout_constraintStart_toStartOf="@+id/musician_img"
+        app:layout_constraintTop_toBottomOf="@+id/musician_img" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/next_bttn"
