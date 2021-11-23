@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
@@ -16,6 +17,9 @@ import com.google.android.material.textview.MaterialTextView;
 
 public class LoginActivity extends AppCompatActivity {
 
+    TextInputEditText email;
+    TextInputEditText password;
+    MaterialButton login_bttn;
 
 
     @Override
@@ -31,17 +35,29 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        TextInputEditText email = findViewById(R.id.email_ed_txt);
-        TextInputEditText password = findViewById(R.id.password_ed_txt);
-        MaterialButton login_bttn = findViewById(R.id.login_bttn);
+        email = findViewById(R.id.email_ed_txt);
+        password = findViewById(R.id.password_ed_txt);
+        login_bttn = findViewById(R.id.login_bttn);
 
-        email.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        login_bttn.setEnabled(false);
+
+        email.addTextChangedListener(new TextWatcher() {
             @Override
-            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                //if (textView.getText().length() > 0)
-                return false;
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                enableLoginIfReady();
             }
         });
+
         // Set an error if the password is less than 8 characters.
         login_bttn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +66,27 @@ public class LoginActivity extends AppCompatActivity {
                     password.setError(getString(R.string.error_password));
                 } else {
                     password.setError(null); // Clear the error
+                    Intent intent = new Intent(LoginActivity.this, MusicianHubActivity.class);
+                    finishAffinity();
+                    startActivity(intent);
                 }
+            }
+        });
+
+        password.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                enableLoginIfReady();
             }
         });
 
@@ -64,6 +100,13 @@ public class LoginActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    private void enableLoginIfReady() {
+        boolean isReady = true;
+        if(email.getText().length() == 0 || password.getText().length() == 0)
+            isReady = false;
+        login_bttn.setEnabled(isReady);
     }
 
     private boolean isPasswordValid(@Nullable Editable text) {
