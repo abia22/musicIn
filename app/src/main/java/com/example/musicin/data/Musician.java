@@ -1,6 +1,9 @@
 package com.example.musicin.data;
 
-public class Musician extends User{
+import android.os.Parcelable;
+import android.os.Parcel;
+
+public class Musician extends User implements Parcelable {
     private String name;
     private String instruments;
     private String bday;
@@ -14,8 +17,42 @@ public class Musician extends User{
         this.bday = bday;
         this.favGenres = favGenres;
         this.favArtists = favArtists;
-        this.email = email;
-        this.password = password;
+    }
+
+    protected Musician(Parcel in) {
+        super(in);
+        name = in.readString();
+        instruments = in.readString();
+        bday = in.readString();
+        favGenres = in.readString();
+        favArtists = in.readString();
+    }
+
+    public static final Creator<Musician> CREATOR = new Creator<Musician>() {
+        @Override
+        public Musician createFromParcel(Parcel in) {
+            return new Musician(in);
+        }
+
+        @Override
+        public Musician[] newArray(int size) {
+            return new Musician[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        super.writeToParcel(parcel, i);
+        parcel.writeString(name);
+        parcel.writeString(instruments);
+        parcel.writeString(bday);
+        parcel.writeString(favGenres);
+        parcel.writeString(favArtists);
     }
 
     public String getName() {

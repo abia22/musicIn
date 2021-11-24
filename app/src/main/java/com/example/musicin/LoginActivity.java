@@ -21,6 +21,8 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textview.MaterialTextView;
 
+import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
+
 public class LoginActivity extends AppCompatActivity {
 
     TextInputEditText email;
@@ -71,6 +73,7 @@ public class LoginActivity extends AppCompatActivity {
         login_bttn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                UIUtil.hideKeyboard(LoginActivity.this);
                 if (!isPasswordValid(password.getText())) {
                     password.setError(getString(R.string.error_password));
                 } else {
@@ -83,6 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                         Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT);
                         toast.show();
                         Intent intent = new Intent(LoginActivity.this, MusicianHubActivity.class);
+                        intent.putExtra("user", user);
                         finishAffinity();
                         startActivity(intent);
                     }

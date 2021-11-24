@@ -27,7 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/age_ed_txt" />
+        app:layout_constraintTop_toBottomOf="@+id/bday_txt" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/favourite_artists_ed_txt"
@@ -51,15 +51,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/genre_ed_txt" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/age_ed_txt"
+    <TextView
+        android:id="@+id/bday_txt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/input_bg"
-        android:drawableStart="@drawable/cake"
         android:drawablePadding="5dp"
         android:hint="@string/birthday"
         android:maxLines="1"
@@ -71,7 +70,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/instrument_ed_txt" />
+        app:layout_constraintTop_toBottomOf="@+id/instrument_ed_txt"
+        android:textSize="18sp"
+        app:drawableStartCompat="@drawable/cake" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/instrument_ed_txt"
