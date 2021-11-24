@@ -2,6 +2,7 @@ package com.example.musicin;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,8 +11,13 @@ import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.musicin.data.Data;
+import com.example.musicin.data.Musician;
+import com.example.musicin.data.User;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textview.MaterialTextView;
 
@@ -20,6 +26,8 @@ public class LoginActivity extends AppCompatActivity {
     TextInputEditText email;
     TextInputEditText password;
     MaterialButton login_bttn;
+    ConstraintLayout layout;
+    Data data = new Data();
 
 
     @Override
@@ -38,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         email = findViewById(R.id.email_ed_txt);
         password = findViewById(R.id.password_ed_txt);
         login_bttn = findViewById(R.id.login_bttn);
+        layout = findViewById(R.id.login_layout);
 
         login_bttn.setEnabled(false);
 
@@ -66,9 +75,18 @@ public class LoginActivity extends AppCompatActivity {
                     password.setError(getString(R.string.error_password));
                 } else {
                     password.setError(null); // Clear the error
-                    Intent intent = new Intent(LoginActivity.this, MusicianHubActivity.class);
-                    finishAffinity();
-                    startActivity(intent);
+                    String email_txt = email.getText().toString();
+                    String pass_txt = password.getText().toString();
+                    if (verifyLogin(email_txt, pass_txt)){
+                        Musician user = data.getMusician(email_txt);
+                        CharSequence text = "Welcome back " + user.getName();
+                        Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT);
+                        toast.show();
+                        Intent intent = new Intent(LoginActivity.this, MusicianHubActivity.class);
+                        finishAffinity();
+                        startActivity(intent);
+                    }
+
                 }
             }
         });
@@ -102,6 +120,20 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    private boolean verifyLogin(String email_txt, String pass_txt) {
+        if (data.checkIfUserExists(email_txt)){
+            if (data.verifyLogin(email_txt, pass_txt)){
+                return true;
+            } else{
+                Snackbar.make(layout, R.string.login_error, Snackbar.LENGTH_SHORT).show();
+                return false;
+            }
+        } else {
+            Snackbar.make(layout, R.string.no_user_error, Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+    }
+
     private void enableLoginIfReady() {
         boolean isReady = true;
         if(email.getText().length() == 0 || password.getText().length() == 0)
@@ -110,6 +142,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean isPasswordValid(@Nullable Editable text) {
-        return text != null && text.length() >= 8;
+        return text != null && text.length() >= 5;
     }
 }
