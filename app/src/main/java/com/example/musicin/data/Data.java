@@ -1,5 +1,6 @@
 package com.example.musicin.data;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,9 +10,14 @@ public class Data {
 
     public Data() {
         this.musicianMap = new HashMap<>();
-        musicianMap.put("musician@mail.com",
-                new Musician("Jorge Daniel", "Guitar", "3/10/1995",
-                        "Rock", "John Mayer", "musician@mail.com", "musician1"));
+        Musician musician1 =  new Musician("Jorge Daniel", "Guitar", "3/10/1995",
+                "Rock", "John Mayer", "musician@mail.com", "musician1");
+        ArrayList<Band> musician1Bands = new ArrayList<>();
+
+        //musician1Bands.add(new Band())
+        //musician1.setBands();
+        musicianMap.put("musician@mail.com", musician1);
+
     }
 
     public boolean checkIfUserExists(String email){

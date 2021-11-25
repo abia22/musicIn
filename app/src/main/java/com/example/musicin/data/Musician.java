@@ -3,12 +3,17 @@ package com.example.musicin.data;
 import android.os.Parcelable;
 import android.os.Parcel;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 public class Musician extends User implements Parcelable {
     private String name;
     private String instruments;
     private String bday;
     private String favGenres;
     private String favArtists;
+    private List<Band> bands;
 
     public Musician(String name, String instruments, String bday, String favGenres, String favArtists, String email, String password) {
         super(email, password);
@@ -17,6 +22,7 @@ public class Musician extends User implements Parcelable {
         this.bday = bday;
         this.favGenres = favGenres;
         this.favArtists = favArtists;
+        bands =  new ArrayList<>();
     }
 
     protected Musician(Parcel in) {
@@ -26,6 +32,7 @@ public class Musician extends User implements Parcelable {
         bday = in.readString();
         favGenres = in.readString();
         favArtists = in.readString();
+        bands = in.readArrayList(Musician.class.getClassLoader());
     }
 
     public static final Creator<Musician> CREATOR = new Creator<Musician>() {
@@ -53,6 +60,7 @@ public class Musician extends User implements Parcelable {
         parcel.writeString(bday);
         parcel.writeString(favGenres);
         parcel.writeString(favArtists);
+        parcel.writeList(bands);
     }
 
     public String getName() {
@@ -93,5 +101,13 @@ public class Musician extends User implements Parcelable {
 
     public void setFavArtists(String favArtists) {
         this.favArtists = favArtists;
+    }
+
+    public List<Band> getBands() {
+        return bands;
+    }
+
+    public void setBands(List<Band> bands) {
+        this.bands = bands;
     }
 }

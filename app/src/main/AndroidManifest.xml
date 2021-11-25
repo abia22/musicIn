@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MusicIn">
         <activity
-            android:name=".profileSettingsActivity"
+            android:name=".ProfileSettingsActivity"
             android:exported="false" />
         <activity
             android:name=".MusicianHubActivity"

@@ -6,7 +6,8 @@
     android:orientation="horizontal"
     android:paddingTop="10dp"
     android:paddingBottom="10dp"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:padding="10dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/member_photo"
@@ -14,7 +15,8 @@
         android:layout_height="70dp"
         android:layout_marginStart="20dp"
         app:civ_border_width="2dp"
-        app:civ_border_color="#FF000000"/>
+        app:civ_border_color="@color/black"
+        android:src="@drawable/musician"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
