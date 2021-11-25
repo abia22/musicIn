@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.musicin.data.BandMember;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class HomeFragment extends Fragment {
     @Nullable
@@ -29,7 +32,6 @@ public class HomeFragment extends Fragment {
         BandMembersAdapter adapter = new BandMembersAdapter(members);
         members_rv.setAdapter(adapter);
         members_rv.setLayoutManager(new LinearLayoutManager(getContext()));
-
         return view;
     }
 }
