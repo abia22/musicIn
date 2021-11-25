@@ -52,7 +52,7 @@
         android:background="@drawable/input_bg"
         android:drawableStart="@drawable/audio_file"
         android:drawablePadding="5dp"
-        android:hint="How many years have been playing"
+        android:hint="Years of playing"
         android:maxLines="1"
         android:minHeight="48dp"
         android:paddingStart="20dp"
@@ -129,6 +129,23 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name_ed_txt4" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/next_bttn_sign_in"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="56dp"
+        android:text="@string/save"
+        android:textSize="20sp"
+        app:backgroundTint="@color/light_blue"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/name_ed_txt5"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/name_ed_txt5"
+        app:layout_constraintTop_toBottomOf="@+id/name_ed_txt5"
+        app:layout_constraintVertical_bias="0.179" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
