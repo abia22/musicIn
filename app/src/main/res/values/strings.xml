@@ -41,5 +41,10 @@
     <string name="requests">Requests</string>
     <string name="profile_settings">Profile Settings</string>
     <string name="save">Save</string>
+    <string name="experience_in_music">Experience in Music</string>
+    <string name="years_of_playing">Years of playing</string>
+    <string name="places_where_you_played">Places you have played in</string>
+    <string name="music_school_background">Music school background</string>
+    <string name="spotify_soundcloud">Spotify/SoundCloud</string>
 
 </resources>

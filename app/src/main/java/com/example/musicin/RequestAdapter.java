@@ -9,18 +9,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.musicin.data.BandMember;
+import com.example.musicin.data.Request;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class BandMembersAdapter extends RecyclerView.Adapter<BandMembersAdapter.ViewHolder> {
-    private List<BandMember> memberList;
+public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHolder> {
+    private List<Request> requestList;
 
-    public BandMembersAdapter(List<BandMember> memberList){
-        this.memberList = memberList;
+    public RequestAdapter(List<Request> requestList){
+        this.requestList = requestList;
     }
 
     @NonNull
@@ -29,7 +29,7 @@ public class BandMembersAdapter extends RecyclerView.Adapter<BandMembersAdapter.
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
-        View contactView = inflater.inflate(R.layout.band_member_row, parent, false);
+        View contactView = inflater.inflate(R.layout.request_row, parent, false);
 
         ViewHolder viewHolder = new ViewHolder(contactView);
         return viewHolder;
@@ -37,33 +37,29 @@ public class BandMembersAdapter extends RecyclerView.Adapter<BandMembersAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        BandMember member = memberList.get(position);
+        Request request = requestList.get(position);
 
         CircleImageView photo = holder.photo;
-        Picasso.get().load(member.getPhoto()).noFade().into(photo);
-        TextView name_tv = holder.name;
-        name_tv.setText(member.getName());
-        TextView instrument_tv = holder.instrument;
-        instrument_tv.setText(member.getInstrument());
+        Picasso.get().load(request.getPhoto()).noFade().into(photo);
+        TextView request_text = holder.request_text;
+        request_text.setText(request.getRequest_text());
 
 
     }
 
     @Override
     public int getItemCount() {
-        return memberList.size();
+        return requestList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         public CircleImageView photo;
-        public TextView name;
-        public TextView instrument;
+        public TextView request_text;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            photo = itemView.findViewById(R.id.member_photo);
-            name = itemView.findViewById(R.id.member_name_txt);
-            instrument = itemView.findViewById(R.id.instrument_txt);
+            photo = itemView.findViewById(R.id.request_photo);
+            request_text = itemView.findViewById(R.id.request_txt);
         }
     }
 }

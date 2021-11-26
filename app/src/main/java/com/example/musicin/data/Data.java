@@ -7,6 +7,7 @@ import java.util.Map;
 public class Data {
 
     Map<String, Musician> musicianMap;
+    Map<String, Event> musicianEventsMap;
 
     public Data() {
         this.musicianMap = new HashMap<>();

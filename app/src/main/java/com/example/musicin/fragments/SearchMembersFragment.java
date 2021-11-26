@@ -1,4 +1,4 @@
-package com.example.musicin;
+package com.example.musicin.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,10 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class SearchEventsFragment extends Fragment {
+import com.example.musicin.R;
+
+public class SearchMembersFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_search_events, container, false);
+        return inflater.inflate(R.layout.fragment_search_members, container, false);
     }
 }

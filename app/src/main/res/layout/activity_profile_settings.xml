@@ -8,7 +8,7 @@
     tools:context=".ProfileSettingsActivity">
 
     <TextView
-        android:id="@+id/sign_in_txt"
+        android:id="@+id/profile_settings_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/profile_settings"
@@ -22,7 +22,7 @@
         app:layout_constraintVertical_bias="0.050000012" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/name_ed_txt"
+        android:id="@+id/experience_ed_txt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -31,7 +31,7 @@
         android:background="@drawable/input_bg"
         android:drawableStart="@drawable/music_note"
         android:drawablePadding="5dp"
-        android:hint="Experience in Music"
+        android:hint="@string/experience_in_music"
         android:maxLines="1"
         android:minHeight="48dp"
         android:paddingStart="20dp"
@@ -40,10 +40,10 @@
         android:paddingBottom="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_in_txt" />
+        app:layout_constraintTop_toBottomOf="@+id/profile_settings_txt" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/name_ed_txt2"
+        android:id="@+id/years_of_playing_ed_txt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -52,7 +52,7 @@
         android:background="@drawable/input_bg"
         android:drawableStart="@drawable/audio_file"
         android:drawablePadding="5dp"
-        android:hint="Years of playing"
+        android:hint="@string/years_of_playing"
         android:maxLines="1"
         android:minHeight="48dp"
         android:paddingStart="20dp"
@@ -62,10 +62,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name_ed_txt" />
+        app:layout_constraintTop_toBottomOf="@+id/experience_ed_txt" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/name_ed_txt3"
+        android:id="@+id/places_played_ed_txt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -74,7 +74,7 @@
         android:background="@drawable/input_bg"
         android:drawableStart="@drawable/house"
         android:drawablePadding="5dp"
-        android:hint="Places where you played"
+        android:hint="@string/places_where_you_played"
         android:maxLines="1"
         android:minHeight="48dp"
         android:paddingStart="20dp"
@@ -84,10 +84,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name_ed_txt2" />
+        app:layout_constraintTop_toBottomOf="@+id/years_of_playing_ed_txt" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/name_ed_txt4"
+        android:id="@+id/school_background_ed_txt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -96,7 +96,7 @@
         android:background="@drawable/input_bg"
         android:drawableStart="@drawable/school"
         android:drawablePadding="5dp"
-        android:hint="music school background"
+        android:hint="@string/music_school_background"
         android:maxLines="1"
         android:minHeight="48dp"
         android:paddingStart="20dp"
@@ -106,10 +106,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name_ed_txt3" />
+        app:layout_constraintTop_toBottomOf="@+id/places_played_ed_txt" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/name_ed_txt5"
+        android:id="@+id/spotify_ed_txt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -118,7 +118,7 @@
         android:background="@drawable/input_bg"
         android:drawableStart="@drawable/insert_link"
         android:drawablePadding="5dp"
-        android:hint="Spotify/SoundCloud"
+        android:hint="@string/spotify_soundcloud"
         android:maxLines="1"
         android:minHeight="48dp"
         android:paddingStart="20dp"
@@ -128,10 +128,34 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name_ed_txt4" />
+        app:layout_constraintTop_toBottomOf="@+id/school_background_ed_txt" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/edit_photo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/person"
+        app:civ_border_color="@color/black"
+        app:civ_border_width="2dp"
+        app:layout_constraintEnd_toEndOf="@+id/spotify_ed_txt"
+        app:layout_constraintStart_toStartOf="@+id/spotify_ed_txt"
+        app:layout_constraintTop_toBottomOf="@+id/spotify_ed_txt" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="24dp"
+        android:src="@drawable/add_a_photo"
+        app:layout_constraintBottom_toTopOf="@+id/save_bttn"
+        app:layout_constraintEnd_toEndOf="@+id/edit_photo"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/edit_photo"
+        app:layout_constraintTop_toBottomOf="@+id/spotify_ed_txt" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/next_bttn_sign_in"
+        android:id="@+id/save_bttn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -141,11 +165,10 @@
         app:backgroundTint="@color/light_blue"
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/name_ed_txt5"
+        app:layout_constraintEnd_toEndOf="@+id/spotify_ed_txt"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/name_ed_txt5"
-        app:layout_constraintTop_toBottomOf="@+id/name_ed_txt5"
-        app:layout_constraintVertical_bias="0.179" />
+        app:layout_constraintStart_toStartOf="@+id/spotify_ed_txt"
+        app:layout_constraintTop_toBottomOf="@+id/edit_photo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

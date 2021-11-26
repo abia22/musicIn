@@ -1,4 +1,4 @@
-package com.example.musicin;
+package com.example.musicin.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.musicin.BandMembersAdapter;
+import com.example.musicin.R;
 import com.example.musicin.data.Band;
 import com.example.musicin.data.BandMember;
 import com.example.musicin.data.Musician;

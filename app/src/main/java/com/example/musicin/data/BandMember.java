@@ -3,9 +3,9 @@ package com.example.musicin.data;
 public class BandMember {
     private String name;
     private String instrument;
-    private byte[] photo;
+    private String photo;
 
-    public BandMember(String name, String instrument, byte[] photo) {
+    public BandMember(String name, String instrument, String photo) {
         this.name = name;
         this.instrument = instrument;
         this.photo = photo;
@@ -27,11 +27,11 @@ public class BandMember {
         this.instrument = instrument;
     }
 
-    public byte[] getPhoto() {
+    public String getPhoto() {
         return photo;
     }
 
-    public void setPhoto(byte[] photo) {
+    public void setPhoto(String photo) {
         this.photo = photo;
     }
 }

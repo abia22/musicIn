@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.musicin.HomeFragment"
+        android:name="com.example.musicin.fragments.HomeFragment"
         android:label="HomeFragment" >
         <argument
             android:name="user"
@@ -15,10 +15,10 @@
     </fragment>
     <fragment
         android:id="@+id/nav_search_events"
-        android:name="com.example.musicin.SearchEventsFragment"
+        android:name="com.example.musicin.fragments.SearchEventsFragment"
         android:label="SearchEventsFragment" />
     <fragment
         android:id="@+id/nav_search_members"
-        android:name="com.example.musicin.SearchMembersFragment"
+        android:name="com.example.musicin.fragments.SearchMembersFragment"
         android:label="SearchMembersFragment" />
 </navigation>
