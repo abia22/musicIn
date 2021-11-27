@@ -7,9 +7,12 @@ import androidx.activity.result.contract.ActivityResultContract;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -30,6 +33,17 @@ public class ProfileSettingsActivity extends AppCompatActivity {
                 }
             });
 
+    private ActivityResultLauncher<String> requestPermissionLauncher =
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+                if (isGranted) {
+                    mGetContent.launch("image/*");
+                } else {
+                    Toast toast = Toast.makeText(getApplicationContext(), "Permission is necessary in order to change the profile picture", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+            });
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +53,14 @@ public class ProfileSettingsActivity extends AppCompatActivity {
         photo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mGetContent.launch("image/*");
+                if (ContextCompat.checkSelfPermission(
+                        getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) ==
+                        PackageManager.PERMISSION_GRANTED) {
+                    mGetContent.launch("image/*");
+                } else {
+                    requestPermissionLauncher.launch(
+                            Manifest.permission.READ_EXTERNAL_STORAGE);
+                }
             }
         });
 
