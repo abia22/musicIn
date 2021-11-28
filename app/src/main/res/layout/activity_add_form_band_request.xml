@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddFormBandRequestActivity"
+    android:background="@drawable/gradient_grey">
+
+
+    <TextView
+        android:id="@+id/new_request_txt"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="@string/new_request_to_form_a_band"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.04000002" />
+
+    <TextView
+        android:id="@+id/genre_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/genre_dots"
+        android:textColor="@color/white"
+
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/genre_spn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/new_request_txt"
+        app:layout_constraintTop_toBottomOf="@+id/new_request_txt" />
+
+
+    <Spinner
+        android:id="@+id/genre_spn"
+        android:layout_width="120dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="@+id/new_request_txt"
+        app:layout_constraintHorizontal_bias="0.68"
+        app:layout_constraintStart_toStartOf="@+id/new_request_txt"
+        app:layout_constraintTop_toBottomOf="@+id/new_request_txt" />
+
+    <TextView
+        android:id="@+id/num_members_txt"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/number_of_members_needed"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/new_request_txt"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/new_request_txt"
+        app:layout_constraintTop_toBottomOf="@+id/genre_txt" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/num_members_ed_txt"
+        android:layout_width="120dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/input_bg"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/new_request_txt"
+        app:layout_constraintHorizontal_bias="0.27"
+        app:layout_constraintStart_toEndOf="@+id/num_members_txt"
+        app:layout_constraintTop_toBottomOf="@+id/genre_spn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

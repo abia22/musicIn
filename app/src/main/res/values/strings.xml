@@ -46,5 +46,8 @@
     <string name="places_where_you_played">Places you have played in</string>
     <string name="music_school_background">Music school background</string>
     <string name="spotify_soundcloud">Spotify/SoundCloud</string>
+    <string name="new_request_to_form_a_band">New Request To Form A Band</string>
+    <string name="genre_dots">Genre:</string>
+    <string name="number_of_members_needed">Number of Members Needed:</string>
 
 </resources>

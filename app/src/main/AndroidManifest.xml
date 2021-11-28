@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MusicIn">
         <activity
+            android:name=".AddFormBandRequestActivity"
+            android:exported="true" />
+        <activity
             android:name=".ProfileSettingsActivity"
             android:exported="false" />
         <activity
