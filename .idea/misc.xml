@@ -27,10 +27,11 @@
         <entry key="..\:/Users/fredf/StudioProjects/musicIn/app/src/main/res/layout/activity_select_ind_ent.xml" value="0.1" />
         <entry key="..\:/Users/fredf/StudioProjects/musicIn/app/src/main/res/layout/activity_select_mus_tec.xml" value="0.1" />
         <entry key="..\:/Users/fredf/StudioProjects/musicIn/app/src/main/res/layout/band_member_row.xml" value="0.3333333333333333" />
-        <entry key="..\:/Users/fredf/StudioProjects/musicIn/app/src/main/res/layout/event_row.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/fredf/StudioProjects/musicIn/app/src/main/res/layout/event_row.xml" value="0.22" />
         <entry key="..\:/Users/fredf/StudioProjects/musicIn/app/src/main/res/layout/fragment_home.xml" value="0.176" />
         <entry key="..\:/Users/fredf/StudioProjects/musicIn/app/src/main/res/layout/fragment_search_events.xml" value="0.15885416666666666" />
         <entry key="..\:/Users/fredf/StudioProjects/musicIn/app/src/main/res/layout/fragment_search_members.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/fredf/StudioProjects/musicIn/app/src/main/res/layout/member_row.xml" value="0.22" />
         <entry key="..\:/Users/fredf/StudioProjects/musicIn/app/src/main/res/layout/request_row.xml" value="0.22" />
         <entry key="..\:/Users/fredf/StudioProjects/musicIn/app/src/main/res/layout/spinner_item.xml" value="0.1640625" />
         <entry key="app/src/main/res/drawable/favouriteGenres.xml" value="0.24583333333333332" />

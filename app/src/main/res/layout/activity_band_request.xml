@@ -78,7 +78,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="200dp"
-                android:layout_marginEnd="50"
+                android:layout_marginEnd="50dp"
                 android:layout_marginRight="100dp"
                 android:text="Instruments in need"
                 android:textAlignment="center"
@@ -115,23 +115,26 @@
                 android:layout_marginEnd="50dp"
                 android:textAlignment="center" />
 
-            <!--
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/requestJoinBand_bttn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="66dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="91dp"
-                    android:text="@string/request_to_join_a_band"
-                    android:textSize="20sp"
-                    app:backgroundTint="@color/light_blue"
-                    app:cornerRadius="10dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.975" />
-    !-->
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/requestJoinBand_bttn"
+                android:layout_width="365dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/members_rv"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
+                android:text="@string/request_to_join_a_band"
+                android:textSize="20sp"
+                app:backgroundTint="@color/light_blue"
+                app:cornerRadius="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.975" />
         </RelativeLayout>
 
     </ScrollView>
