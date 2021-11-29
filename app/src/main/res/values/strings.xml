@@ -49,5 +49,6 @@
     <string name="new_request_to_form_a_band">New Request To Form A Band</string>
     <string name="genre_dots">Genre:</string>
     <string name="number_of_members_needed">Number of Members Needed:</string>
+    <string name="request_to_join_a_band">Request to join a band</string>
 
 </resources>
