@@ -8,7 +8,7 @@ public class Data {
 
     Map<String, Musician> musicianMap;
     Map<String, Event> musicianEventsMap;
-    Map<String, Request> BandRequest;
+    Map<String, Request> musicianRequests;
 
     public Data() {
         this.musicianMap = new HashMap<>();

@@ -52,5 +52,9 @@
     <string name="request_to_join_a_band">Request to join a band</string>
     <string name="instruments_needed">Instruments needed:</string>
     <string name="enter_instrument_here">Enter Instrument Here</string>
+    <string name="already_have_members">Already have some members aligned? Add them here:</string>
+    <string name="add_member">Add Member</string>
+    <string name="search_member">Search Member</string>
+    <string name="submit">Submit</string>
 
 </resources>
