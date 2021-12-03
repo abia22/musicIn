@@ -1,6 +1,7 @@
 package com.example.musicin;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
         ImageCarousel carousel = findViewById(R.id.carousel);
         carousel.registerLifecycle(getLifecycle());
+
+
 
         List<CarouselItem> list = new ArrayList<>();
 
@@ -61,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, SelectIndEntActivity.class));
             }
         });
+
+
 
     }
 }
