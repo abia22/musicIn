@@ -50,5 +50,7 @@
     <string name="genre_dots">Genre:</string>
     <string name="number_of_members_needed">Number of Members Needed:</string>
     <string name="request_to_join_a_band">Request to join a band</string>
+    <string name="instruments_needed">Instruments needed:</string>
+    <string name="enter_instrument_here">Enter Instrument Here</string>
 
 </resources>
