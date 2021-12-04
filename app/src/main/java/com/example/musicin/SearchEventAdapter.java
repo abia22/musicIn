@@ -13,6 +13,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class SearchEventAdapter extends RecyclerView.Adapter<SearchEventAdapter.ViewHolder> {
@@ -36,10 +38,8 @@ public class SearchEventAdapter extends RecyclerView.Adapter<SearchEventAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-    holder.title.setText(titles.get(position));
-    Picasso.get().load(images.get(position)).into(holder.gridIcon);
-
-
+        holder.title.setText(titles.get(position));
+        Picasso.get().load(images.get(position)).into(holder.gridIcon);
     }
 
     @Override

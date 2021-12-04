@@ -29,6 +29,10 @@ public class SearchEventsFragment extends Fragment {
         titles.add("event2");
         titles.add("event3");
         titles.add("event4");
+        images.add("https://www.collinsdictionary.com/images/full/concert_295115348.jpg");
+        images.add("https://www.collinsdictionary.com/images/full/concert_295115348.jpg");
+        images.add("https://www.collinsdictionary.com/images/full/concert_295115348.jpg");
+        images.add("https://www.collinsdictionary.com/images/full/concert_295115348.jpg");
         SearchEventAdapter searchEventAdapter = new SearchEventAdapter(view.getContext(),images,titles);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(view.getContext(),2,GridLayoutManager.VERTICAL,false);
         list.setLayoutManager(gridLayoutManager);

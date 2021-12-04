@@ -12,6 +12,7 @@
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout-w1240dp/event_row.xml" value="0.23560910307898258" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout-w936dp/fragment_search_events.xml" value="0.275" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/activity_add_form_band_request.xml" value="0.2" />
+        <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/activity_band_request.xml" value="0.275" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/activity_enterprise_sign_in.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/activity_login.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/activity_main.xml" value="0.33" />
@@ -26,6 +27,7 @@
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/fragment_search_events.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/fragment_search_members.xml" value="0.25" />
+        <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/grid.xml" value="0.25" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/num_del_row.xml" value="0.275" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/request_row.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/spinner_item.xml" value="0.36666666666666664" />
