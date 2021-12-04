@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -29,13 +30,20 @@ public class LoginActivity extends AppCompatActivity {
     TextInputEditText password;
     MaterialButton login_bttn;
     ConstraintLayout layout;
-    Data data = new Data();
+    Data data;
+
+    private static final String SHARED_PREF_NAME = "mypref";
+    private static final String KEY_EMAIL = "email";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        data = new Data();
+
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
 
         TextView sign_up_txt = findViewById(R.id.sing_up_txt);
         sign_up_txt.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +89,11 @@ public class LoginActivity extends AppCompatActivity {
                     String email_txt = email.getText().toString();
                     String pass_txt = password.getText().toString();
                     if (verifyLogin(email_txt, pass_txt)){
+
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString(KEY_EMAIL,email_txt);
+                        editor.apply();
+
                         Musician user = data.getMusician(email_txt);
                         CharSequence text = "Welcome back " + user.getName();
                         Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT);

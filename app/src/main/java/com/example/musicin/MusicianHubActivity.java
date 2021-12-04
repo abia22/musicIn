@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,10 +20,15 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class MusicianHubActivity extends AppCompatActivity {
 
+    private static final String SHARED_PREF_NAME = "mypref";
+    private static final String KEY_EMAIL = "email";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_musician_hub);
+
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
 
         Musician user = getIntent().getParcelableExtra("user");
 
@@ -65,9 +71,13 @@ public class MusicianHubActivity extends AppCompatActivity {
                 Intent intent;
                 switch (item.getItemId()){
                     case R.id.logout_item:
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.clear();
+                        editor.apply();
                         intent = new Intent(MusicianHubActivity.this, MainActivity.class);
                         finishAffinity();
                         startActivity(intent);
+                        break;
                     case R.id.profile_settings_item:
                         intent = new Intent(MusicianHubActivity.this, ProfileSettingsActivity.class);
                         startActivity(intent);

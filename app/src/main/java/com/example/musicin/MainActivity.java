@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.musicin.data.Data;
+import com.example.musicin.data.Musician;
 import com.google.android.material.button.MaterialButton;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
@@ -20,14 +23,29 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String SHARED_PREF_NAME = "mypref";
+    private static final String KEY_EMAIL = "email";
+    Data data;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+       data = new Data();
+
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
+        String email = sharedPreferences.getString(KEY_EMAIL, null);
+        if(email != null) {
+            Musician user = data.getMusician(email);
+            Intent intent = new Intent(MainActivity.this, MusicianHubActivity.class);
+            intent.putExtra("user", user);
+            finishAffinity();
+            startActivity(intent);
+        }
+
         ImageCarousel carousel = findViewById(R.id.carousel);
         carousel.registerLifecycle(getLifecycle());
-
 
 
         List<CarouselItem> list = new ArrayList<>();
