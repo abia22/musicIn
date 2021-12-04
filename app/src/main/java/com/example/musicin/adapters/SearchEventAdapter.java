@@ -1,18 +1,16 @@
-package com.example.musicin;
+package com.example.musicin.adapters;
 
 import android.content.Context;
-import android.text.Layout;
 import android.view.LayoutInflater;
-import android.view.SearchEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.musicin.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

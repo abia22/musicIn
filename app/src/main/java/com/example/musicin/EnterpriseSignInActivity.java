@@ -26,7 +26,7 @@ public class EnterpriseSignInActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(EnterpriseSignInActivity.this,MusicianEmailPwdSignInActivity.class));
+                startActivity(new Intent(EnterpriseSignInActivity.this, EmailPwdSignInActivity.class));
             }
         });
     }

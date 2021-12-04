@@ -1,4 +1,4 @@
-package com.example.musicin;
+package com.example.musicin.adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,15 +12,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.musicin.AddFormBandRequestActivity;
+import com.example.musicin.R;
+
 import java.util.ArrayList;
 
-public class InstrumentsListViewAdapter extends ArrayAdapter<String> {
+public class MembersListViewAdapter extends ArrayAdapter<String> {
 
     ArrayList<String> list;
     Context context;
 
-    public InstrumentsListViewAdapter(Context context, ArrayList<String> list) {
+    public MembersListViewAdapter(Context context, ArrayList<String> list) {
         super(context, R.layout.num_del_row, list);
+        this.context = context;
+        this.list = list;
     }
 
     @NonNull
@@ -41,7 +46,7 @@ public class InstrumentsListViewAdapter extends ArrayAdapter<String> {
             remove.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    AddFormBandRequestActivity.removeInstrument(position);
+                    AddFormBandRequestActivity.removeMember(position);
                 }
             });
         }

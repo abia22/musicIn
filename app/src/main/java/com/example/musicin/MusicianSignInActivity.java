@@ -1,7 +1,6 @@
 package com.example.musicin;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -25,7 +24,7 @@ public class MusicianSignInActivity extends AppCompatActivity implements DatePic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_musician_sign_in);
+        setContentView(R.layout.activity_musician_sign_up);
 
         TextInputEditText name = findViewById(R.id.name_ed_txt);
         TextInputEditText instruments = findViewById(R.id.instrument_ed_txt);
@@ -65,7 +64,7 @@ public class MusicianSignInActivity extends AppCompatActivity implements DatePic
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MusicianSignInActivity.this,MusicianEmailPwdSignInActivity.class));
+                startActivity(new Intent(MusicianSignInActivity.this, EmailPwdSignInActivity.class));
                 name.getText().toString();
             }
         });

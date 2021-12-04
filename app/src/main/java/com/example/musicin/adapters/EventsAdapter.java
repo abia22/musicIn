@@ -1,4 +1,4 @@
-package com.example.musicin;
+package com.example.musicin.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.musicin.R;
 import com.example.musicin.data.Event;
 import com.squareup.picasso.Picasso;
 

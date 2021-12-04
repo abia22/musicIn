@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.musicin.R;
-import com.example.musicin.SearchEventAdapter;
+import com.example.musicin.adapters.SearchEventAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -5,19 +5,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.Toast;
+
+import com.example.musicin.adapters.InstrumentsListViewAdapter;
+import com.example.musicin.adapters.MembersListViewAdapter;
+import com.example.musicin.data.Data;
+import com.example.musicin.utils.NonScrollListView;
 
 import java.util.ArrayList;
 
 public class AddFormBandRequestActivity extends AppCompatActivity {
 
     private static ArrayList<String> instrumentsList;
-    private static ListView instruments_lv;
+    private static NonScrollListView instruments_lv;
     private static ArrayList<String> membersList;
-    private static ListView members_lv;
+    private static NonScrollListView  members_lv;
     private static InstrumentsListViewAdapter instrumentsAdapter;
     private static MembersListViewAdapter membersAdapter;
 
@@ -25,6 +30,10 @@ public class AddFormBandRequestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_form_band_request);
+
+        AutoCompleteTextView genres_edtxt = findViewById(R.id.genre_actv);
+        ArrayAdapter<String> genresAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Data.genres);
+        genres_edtxt.setAdapter(genresAdapter);
 
         EditText instruments_edt = findViewById(R.id.needed_instruments_ed_txt);
         instruments_lv = findViewById(R.id.instruments_lv);
@@ -44,7 +53,7 @@ public class AddFormBandRequestActivity extends AppCompatActivity {
                 } else {
                     instruments_edt.setText("");
                     instrumentsList.add(text);
-                    instrumentsAdapter.notifyDataSetChanged();
+                    instruments_lv.setAdapter(instrumentsAdapter);
                 }
             }
         });
@@ -67,7 +76,7 @@ public class AddFormBandRequestActivity extends AppCompatActivity {
                 } else {
                     members_edt.setText("");
                     membersList.add(text);
-                    membersAdapter.notifyDataSetChanged();
+                    members_lv.setAdapter(membersAdapter);
                 }
             }
         });

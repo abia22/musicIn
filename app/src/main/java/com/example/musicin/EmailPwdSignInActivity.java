@@ -9,24 +9,24 @@ import android.view.View;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
-public class MusicianEmailPwdSignInActivity extends AppCompatActivity {
+public class EmailPwdSignInActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_musician_email_pwd_sign_in);
+        setContentView(R.layout.activity_email_pwd_sign_up);
 
         TextInputEditText email = findViewById(R.id.email_ed_txt);
         TextInputEditText password = findViewById(R.id.password_ed_txt);
         TextInputEditText passwordConfirmed = findViewById(R.id.password_ed_txt3);
 
-        MaterialButton login = findViewById(R.id.login_bttn);
+        MaterialButton signup_bttn = findViewById(R.id.sign_up_bttn);
 
 
-        login.setOnClickListener(new View.OnClickListener() {
+        signup_bttn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent());
+                startActivity(new Intent(EmailPwdSignInActivity.this, MusicianSignInActivity.class));
             }
         });
     }

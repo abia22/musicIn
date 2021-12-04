@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MusicianEmailPwdSignInActivity"
+    tools:context=".EmailPwdSignInActivity"
     android:background="@drawable/gradient_grey">
 
 
@@ -12,7 +12,7 @@
         android:id="@+id/sign_in_txt2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/sign_in"
+        android:text="@string/sign_up"
         android:textColor="@color/white"
         android:textSize="36sp"
         android:textStyle="bold"
@@ -88,11 +88,11 @@
         app:layout_constraintTop_toBottomOf="@+id/password_ed_txt" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/login_bttn"
+        android:id="@+id/sign_up_bttn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="@string/login"
+        android:text="@string/sign_up"
         app:backgroundTint="@color/light_blue"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="@+id/password_ed_txt"

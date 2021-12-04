@@ -15,10 +15,9 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.musicin.BandMembersAdapter;
+import com.example.musicin.adapters.BandMembersAdapter;
 import com.example.musicin.R;
 import com.example.musicin.data.Band;
-import com.example.musicin.data.BandMember;
 import com.example.musicin.data.Musician;
 
 import java.util.ArrayList;

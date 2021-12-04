@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">MusicIn</string>
     <string name="login">Login</string>
-    <string name="slogan">The place where musicians, technicians and enterprises come together</string>
-    <string name="sign_in">Sign In</string>
+    <string name="slogan">The place where musicians and enterprises come together</string>
+    <string name="sign_up">Sign Up</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -56,5 +56,6 @@
     <string name="add_member">Add Member</string>
     <string name="search_member">Search Member</string>
     <string name="submit">Submit</string>
+    <string name="insert_genre">Insert Genre</string>
 
 </resources>
