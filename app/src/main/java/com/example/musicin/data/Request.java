@@ -1,19 +1,19 @@
 package com.example.musicin.data;
 
 public class Request {
-    String photo;
+    int photo;
     String request_text;
 
-    public Request(String photo, String request_text) {
+    public Request(int photo, String request_text) {
         this.photo = photo;
         this.request_text = request_text;
     }
 
-    public String getPhoto() {
+    public int getPhoto() {
         return photo;
     }
 
-    public void setPhoto(String photo) {
+    public void setPhoto(int photo) {
         this.photo = photo;
     }
 

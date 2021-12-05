@@ -67,8 +67,8 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
             super(itemView);
             photo = itemView.findViewById(R.id.event_photo);
             name = itemView.findViewById(R.id.event_name_txt);
-            location = itemView.findViewById(R.id.instrument_txt);
-            date = itemView.findViewById(R.id.event_location_txt);
+            location = itemView.findViewById(R.id.event_location_txt);
+            date = itemView.findViewById(R.id.event_date_txt);
         }
     }
 }

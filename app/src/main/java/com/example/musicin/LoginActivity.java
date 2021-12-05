@@ -99,7 +99,7 @@ public class LoginActivity extends AppCompatActivity {
                         Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT);
                         toast.show();
                         Intent intent = new Intent(LoginActivity.this, MusicianHubActivity.class);
-                        intent.putExtra("user", user);
+                        intent.putExtra("email", email_txt);
                         finishAffinity();
                         startActivity(intent);
                     }

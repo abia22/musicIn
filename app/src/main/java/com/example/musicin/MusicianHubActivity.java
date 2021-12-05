@@ -30,11 +30,11 @@ public class MusicianHubActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
 
-        Musician user = getIntent().getParcelableExtra("user");
+        String email = getIntent().getStringExtra("email");
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         Bundle data = new Bundle();
-        data.putParcelable("user", user);
+        data.putString("email", email);
         Fragment homeFragment = new HomeFragment();
         homeFragment.setArguments(data);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment, homeFragment).commit();
@@ -55,7 +55,7 @@ public class MusicianHubActivity extends AppCompatActivity {
                         break;
                 }
                 Bundle data = new Bundle();
-                data.putParcelable("user", user);
+                data.putString("email", email);
                 fragment.setArguments(data);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment, fragment).commit();
                 return true;

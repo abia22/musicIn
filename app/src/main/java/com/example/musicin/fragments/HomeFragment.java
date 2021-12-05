@@ -17,8 +17,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.musicin.adapters.BandMembersAdapter;
 import com.example.musicin.R;
+import com.example.musicin.adapters.EventsAdapter;
+import com.example.musicin.adapters.RequestAdapter;
 import com.example.musicin.data.Band;
+import com.example.musicin.data.Data;
+import com.example.musicin.data.Event;
 import com.example.musicin.data.Musician;
+import com.example.musicin.data.Request;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +34,11 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        Bundle data = getArguments();
-        Musician user = data.getParcelable("user");
+        Data data = new Data();
+
+        Bundle bundle = getArguments();
+        String email = bundle.getString("email");
+        Musician user = data.getMusician(email);
 
         RecyclerView members_rv = view.findViewById(R.id.members_rv);
         Spinner bands_sp = view.findViewById(R.id.my_bands_spinner);
@@ -44,14 +52,11 @@ public class HomeFragment extends Fragment {
             }
         }
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getContext(), R.layout.spinner_item, bandNames);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        bands_sp.setAdapter(arrayAdapter);
+        DividerItemDecoration divider = new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL);
 
-        /*ArrayList<BandMember> members = new ArrayList<>();
-        members.add(new BandMember("member1", "instrument1", null));
-        members.add(new BandMember("member2", "instrument2", null));
-        members.add(new BandMember("member3", "instrument3", null));*/
+        ArrayAdapter<String> bandsAdapter = new ArrayAdapter<String>(getContext(), R.layout.spinner_item, bandNames);
+        bandsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        bands_sp.setAdapter(bandsAdapter);
 
         bands_sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -60,7 +65,6 @@ public class HomeFragment extends Fragment {
                     BandMembersAdapter adapter = new BandMembersAdapter(bandList.get(i).getMembers());
                     members_rv.setAdapter(adapter);
                     members_rv.setLayoutManager(new LinearLayoutManager(getContext()));
-                    DividerItemDecoration divider = new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL);
                     members_rv.addItemDecoration(divider);
                 }
 
@@ -72,9 +76,19 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        RecyclerView events_rv = view.findViewById(R.id.events_rv);
+        List<Event> eventList = data.getMusicianEvents(user.getEmail());
+        EventsAdapter eventsAdapter = new EventsAdapter(eventList);
+        events_rv.setAdapter(eventsAdapter);
+        events_rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        events_rv.addItemDecoration(divider);
 
-
-
+        RecyclerView requests_rv = view.findViewById(R.id.requests_rv);
+        List<Request> requestsList = data.getMusicianRequests(user.getEmail());
+        RequestAdapter requestsAdapter = new RequestAdapter(requestsList);
+        requests_rv.setAdapter(requestsAdapter);
+        requests_rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        requests_rv.addItemDecoration(divider);
 
         return view;
     }

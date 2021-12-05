@@ -41,7 +41,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
         Request request = requestList.get(position);
 
         CircleImageView photo = holder.photo;
-        Picasso.get().load(request.getPhoto()).noFade().into(photo);
+        photo.setImageResource(request.getPhoto());
         TextView request_text = holder.request_text;
         request_text.setText(request.getRequest_text());
 

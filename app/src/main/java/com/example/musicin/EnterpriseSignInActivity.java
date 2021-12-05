@@ -14,7 +14,7 @@ public class EnterpriseSignInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_enterprise_sign_in);
+        setContentView(R.layout.activity_enterprise_sign_up);
 
         TextInputEditText name = findViewById(R.id.name_ed_txt);
         TextInputEditText nif = findViewById(R.id.nif_ed_txt);

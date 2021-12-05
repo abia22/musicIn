@@ -37,9 +37,8 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
         String email = sharedPreferences.getString(KEY_EMAIL, null);
         if(email != null) {
-            Musician user = data.getMusician(email);
             Intent intent = new Intent(MainActivity.this, MusicianHubActivity.class);
-            intent.putExtra("user", user);
+            intent.putExtra("email", email);
             finishAffinity();
             startActivity(intent);
         }

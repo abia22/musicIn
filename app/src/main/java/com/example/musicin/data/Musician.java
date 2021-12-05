@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class Musician extends User implements Parcelable {
+public class Musician extends User {
     private String name;
     private String instruments;
     private String bday;
     private String favGenres;
     private String favArtists;
-    private List<Band> bands;
+    private ArrayList<Band> bands;
 
     public Musician(String name, String instruments, String bday, String favGenres, String favArtists, String email, String password) {
         super(email, password);
@@ -25,43 +25,8 @@ public class Musician extends User implements Parcelable {
         bands =  new ArrayList<>();
     }
 
-    protected Musician(Parcel in) {
-        super(in);
-        name = in.readString();
-        instruments = in.readString();
-        bday = in.readString();
-        favGenres = in.readString();
-        favArtists = in.readString();
-        bands = in.readArrayList(Musician.class.getClassLoader());
-    }
 
-    public static final Creator<Musician> CREATOR = new Creator<Musician>() {
-        @Override
-        public Musician createFromParcel(Parcel in) {
-            return new Musician(in);
-        }
 
-        @Override
-        public Musician[] newArray(int size) {
-            return new Musician[size];
-        }
-    };
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        super.writeToParcel(parcel, i);
-        parcel.writeString(name);
-        parcel.writeString(instruments);
-        parcel.writeString(bday);
-        parcel.writeString(favGenres);
-        parcel.writeString(favArtists);
-        parcel.writeList(bands);
-    }
 
     public String getName() {
         return name;
@@ -103,11 +68,17 @@ public class Musician extends User implements Parcelable {
         this.favArtists = favArtists;
     }
 
-    public List<Band> getBands() {
+    public ArrayList<Band> getBands() {
         return bands;
     }
 
-    public void setBands(List<Band> bands) {
+    public void setBands(ArrayList<Band> bands) {
         this.bands = bands;
     }
+
+    public void addBand(Band band){
+        bands.add(band);
+    }
+
+
 }
