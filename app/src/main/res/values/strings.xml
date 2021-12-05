@@ -57,5 +57,6 @@
     <string name="search_member">Search Member</string>
     <string name="submit">Submit</string>
     <string name="insert_genre">Insert Genre</string>
+    <string name="hyperlink">Know more about the place at <a href="https://hardrockcafe.com">hardrockcafe.com</a></string>
 
 </resources>
