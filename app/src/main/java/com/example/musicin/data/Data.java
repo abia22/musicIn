@@ -28,7 +28,7 @@ public class Data {
         Musician musician2 = new Musician("Kara Woolley", "Piano", "14/08/1996",
                 "", "", "musician2@mail.com", "musician2");
 
-        MusicianProfile musicianProfile2 = new MusicianProfile(3, "various cafes and small venues", "Liberty Music School", "https://www.youtube.com/", "https://image.freepik.com/free-photo/young-woman-playing-piano-indoors_23-2149140654.jpg");
+        MusicianProfile musicianProfile2 = new MusicianProfile(3, "various cafes and small venues", "Liberty Music School", "https://www.youtube.com/", "https://image.freepik.com/free-photo/young-woman-playing-piano-indoors_23-2149140646.jpg");
         musicianProfileMap.put("musician2@mail.com", musicianProfile2);
 
         BandMember member1 = new BandMember("Dollie Moody", "Guitar", "https://image.freepik.com/free-photo/cheerful-ginger-teenage-girl-stretches-arm-making-selfie-smiles-gladfully-with-teeth-glad-buy-new-white-electric-guitar-wears-casual-clothes-going-practice-playing-musical-instrument_273609-50910.jpg");

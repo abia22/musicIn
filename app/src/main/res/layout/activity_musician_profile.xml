@@ -74,7 +74,7 @@
                 android:layout_width="380dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="45dp"
                 android:layout_marginEnd="24dp"
                 android:text="I have played my instrument for this long..."
                 android:textAlignment="center"

@@ -71,7 +71,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
         android:layout_marginTop="68dp"
-        android:onClick="return_event_search"
         android:text="request to join event"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
