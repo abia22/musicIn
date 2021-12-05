@@ -1,27 +1,18 @@
 package com.example.musicin.data;
 
-public class Request {
-    int photo;
-    String request_text;
+public class Request extends Notification{
+    private String email;
 
-    public Request(int photo, String request_text) {
-        this.photo = photo;
-        this.request_text = request_text;
+    public Request(int photo, String request_text, String email) {
+        super(photo, request_text);
+        this.email = email;
     }
 
-    public int getPhoto() {
-        return photo;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPhoto(int photo) {
-        this.photo = photo;
-    }
-
-    public String getRequest_text() {
-        return request_text;
-    }
-
-    public void setRequest_text(String request_text) {
-        this.request_text = request_text;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

@@ -11,15 +11,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MusicIn"
-        >
+        android:theme="@style/Theme.MusicIn">
+        <activity
+            android:name=".MusicianProfileActivity"
+            android:exported="true" />
         <activity
             android:name=".BandRequestActivity"
             android:exported="false" />
         <activity
             android:name=".AddFormBandRequestActivity"
             android:exported="true"
-            android:windowSoftInputMode="stateHidden|adjustPan"/>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ProfileSettingsActivity"
             android:exported="false" />

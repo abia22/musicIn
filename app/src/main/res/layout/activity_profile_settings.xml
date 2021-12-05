@@ -22,37 +22,17 @@
         app:layout_constraintVertical_bias="0.050000012" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/experience_ed_txt"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/input_bg"
-        android:drawableStart="@drawable/music_note"
-        android:drawablePadding="5dp"
-        android:hint="@string/experience_in_music"
-        android:maxLines="1"
-        android:minHeight="48dp"
-        android:paddingStart="20dp"
-        android:paddingTop="10dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_settings_txt" />
-
-    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/years_of_playing_ed_txt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/input_bg"
         android:drawableStart="@drawable/audio_file"
         android:drawablePadding="5dp"
         android:hint="@string/years_of_playing"
+        android:inputType="number"
         android:maxLines="1"
         android:minHeight="48dp"
         android:paddingStart="20dp"
@@ -62,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/experience_ed_txt" />
+        app:layout_constraintTop_toBottomOf="@+id/profile_settings_txt" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/places_played_ed_txt"
@@ -118,7 +98,7 @@
         android:background="@drawable/input_bg"
         android:drawableStart="@drawable/insert_link"
         android:drawablePadding="5dp"
-        android:hint="@string/spotify_soundcloud"
+        android:hint="@string/social_media"
         android:maxLines="1"
         android:minHeight="48dp"
         android:paddingStart="20dp"
@@ -134,7 +114,7 @@
         android:id="@+id/edit_photo"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:src="@drawable/person"
         app:civ_border_color="@color/black"
         app:civ_border_width="2dp"
@@ -145,7 +125,7 @@
     <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="105dp"
         android:layout_marginEnd="24dp"
         android:src="@drawable/add_a_photo"
         app:layout_constraintBottom_toTopOf="@+id/save_bttn"

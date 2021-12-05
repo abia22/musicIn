@@ -1,5 +1,6 @@
 package com.example.musicin.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,14 +16,16 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.musicin.MusicianProfileActivity;
 import com.example.musicin.adapters.BandMembersAdapter;
 import com.example.musicin.R;
 import com.example.musicin.adapters.EventsAdapter;
-import com.example.musicin.adapters.RequestAdapter;
+import com.example.musicin.adapters.NotificationAdapter;
 import com.example.musicin.data.Band;
 import com.example.musicin.data.Data;
 import com.example.musicin.data.Event;
 import com.example.musicin.data.Musician;
+import com.example.musicin.data.Notification;
 import com.example.musicin.data.Request;
 
 import java.util.ArrayList;
@@ -83,12 +86,24 @@ public class HomeFragment extends Fragment {
         events_rv.setLayoutManager(new LinearLayoutManager(getContext()));
         events_rv.addItemDecoration(divider);
 
-        RecyclerView requests_rv = view.findViewById(R.id.requests_rv);
-        List<Request> requestsList = data.getMusicianRequests(user.getEmail());
-        RequestAdapter requestsAdapter = new RequestAdapter(requestsList);
-        requests_rv.setAdapter(requestsAdapter);
-        requests_rv.setLayoutManager(new LinearLayoutManager(getContext()));
-        requests_rv.addItemDecoration(divider);
+        RecyclerView notifications_rv = view.findViewById(R.id.notification_rv);
+        List<Notification> notificationsList = data.getMusicianRequests(user.getEmail());
+        NotificationAdapter requestsAdapter = new NotificationAdapter(notificationsList);
+        notifications_rv.setAdapter(requestsAdapter);
+        notifications_rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        notifications_rv.addItemDecoration(divider);
+
+        requestsAdapter.setOnItemClickListener(new NotificationAdapter.OnItemClickListener() {
+            @Override
+            public void onItemCLick(int position) {
+                Notification notification = notificationsList.get(position);
+                if(notification instanceof Request){
+                    Intent intent = new Intent(getActivity(), MusicianProfileActivity.class);
+                    intent.putExtra("email", ((Request) notification).getEmail());
+                    startActivity(intent);
+                }
+            }
+        });
 
         return view;
     }

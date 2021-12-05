@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MusicianProfileActivity"
+    android:background="@drawable/gradient_grey">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/person_name_txt"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:text="Person's Name"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/person_age_txt"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:text="Person's Age"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/person_name_txt"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="32dp"/>
+
+            <TextView
+                android:id="@+id/person_instrument_txt"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:text="Person's Instrument"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/person_age_txt"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="32dp"/>
+
+            <ImageView
+                android:id="@+id/person_photo_iv"
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:src="@drawable/musician"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@drawable/border"
+                android:padding="5dp"
+                android:cropToPadding="true"/>
+
+            <TextView
+                android:id="@+id/years_of_playing_txt"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="24dp"
+                android:text="I have played my instrument for this long..."
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/person_instrument_txt" />
+
+            <TextView
+                android:id="@+id/places_played_txt"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="24dp"
+                android:text="I have played at..."
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/years_of_playing_txt" />
+
+            <TextView
+                android:id="@+id/school_background_txt"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="24dp"
+                android:text="I have have studied at..."
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/places_played_txt" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/social_media_btn"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="Check out my music"
+                app:icon="@drawable/insert_link"
+                app:layout_constraintEnd_toEndOf="@+id/school_background_txt"
+                app:layout_constraintStart_toStartOf="@+id/school_background_txt"
+                app:layout_constraintTop_toBottomOf="@+id/school_background_txt"
+                app:strokeColor="@color/white"
+                app:strokeWidth="1dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/accept_btn"
+                android:layout_width="105dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="32dp"
+                android:backgroundTint="#48BC00"
+                android:text="Accept Request"
+                app:layout_constraintEnd_toStartOf="@+id/decline_btn"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/social_media_btn"
+                app:layout_constraintTop_toBottomOf="@+id/social_media_btn" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/decline_btn"
+                android:layout_width="105dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="40dp"
+                android:backgroundTint="#BC0006"
+                android:text="Decline Request"
+                app:layout_constraintEnd_toEndOf="@+id/social_media_btn"
+                app:layout_constraintStart_toEndOf="@+id/accept_btn"
+                app:layout_constraintTop_toBottomOf="@+id/social_media_btn" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
