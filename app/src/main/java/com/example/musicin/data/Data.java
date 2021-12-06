@@ -42,6 +42,12 @@ public class Data {
         Band band = new Band("King Red", memberList);
         musician1.addBand(band);
 
+        List<String> bandRequestInstruments = new ArrayList<>();
+        bandRequestInstruments.add("Guitar");
+        bandRequestInstruments.add("Drums");
+        bandRequestInstruments.add("Singer");
+        BandRequest bandRequest = new BandRequest(bandRequestInstruments, "Rock",null);
+
         musicianMap.put("musician@mail.com", musician1);
         musicianMap.put("musician2@mail.com", musician2);
 
