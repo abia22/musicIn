@@ -17,14 +17,12 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class SearchEventAdapter extends RecyclerView.Adapter<SearchEventAdapter.ViewHolder> {
-    List<String> images;
-    List<String> titles;
+    List<Event> events;
     Context context;
     LayoutInflater inflater;
 
-    public SearchEventAdapter(Context ctx, List<String> ev, List<String> titles ){
-        this.titles = titles;
-        this.images = images;
+    public SearchEventAdapter(Context ctx, List<Event> events){
+        this.events = events;
         this.inflater = LayoutInflater.from(ctx);
     }
 
@@ -37,13 +35,13 @@ public class SearchEventAdapter extends RecyclerView.Adapter<SearchEventAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.title.setText(titles.get(position));
-        Picasso.get().load(images.get(position)).into(holder.gridIcon);
+        holder.title.setText(events.get(position).getName());
+        Picasso.get().load(events.get(position).getPhoto()).into(holder.gridIcon);
     }
 
     @Override
     public int getItemCount() {
-        return titles.size();
+        return events.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

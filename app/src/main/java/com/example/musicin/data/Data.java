@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Data {
 
@@ -106,6 +107,23 @@ public class Data {
 
     public List<Event>getAllEvents(){
         return eventsList;
+    }
+
+    public List<Event> applyFilter(boolean payment,boolean location,String genre,String date){
+        List<Event> filteredEvents = eventsList;
+        if(payment){
+            filteredEvents = filteredEvents.stream().filter(event -> event.getPayment() > 0 ).collect(Collectors.toList());
+        }
+
+        if(genre != null){
+            filteredEvents = filteredEvents.stream().filter(event -> event.getGenre().equalsIgnoreCase(genre)).collect(Collectors.toList());
+        }
+
+        if(date != null){
+            filteredEvents = filteredEvents.stream().filter(event -> event.getDate().equalsIgnoreCase(date)).collect(Collectors.toList());
+        }
+        return filteredEvents;
+
     }
 
 }
