@@ -13,6 +13,7 @@ public class Data {
     Map<String, List<Event>> musicianEventsMap;
     Map<String, List<Notification>> musicianNotificationsMap;
     Map<String, MusicianProfile> musicianProfileMap;
+    List<Event> eventsList;
 
     public static final String[] genres = new String[] {"Blues", "ClassicRock", "Country", "Dance", "Disco", "Funk", "Grunge", "HipHop", "Jazz", "Metal", "NewAge", "Oldies", "Other", "Pop", "R&B", "Rap", "Reggae", "Rock", "Techno", "Industrial", "Alternative", "Ska", "DeathMetal", "Pranks", "Soundtrack", "EuroTechno", "Ambient", "TripHop", "Vocal", "Jazz+Funk", "Fusion", "Trance", "Classical", "Instrumental", "Acid", "House", "Game", "SoundClip", "Gospel", "Noise", "AlternativeRock", "Bass", "Soul", "Punk", "Space", "Meditative", "InstrumentalPop", "InstrumentalRock", "Ethnic", "Gothic", "Darkwave", "TechnoIndustrial", "Electronic", "PopFolk", "Eurodance", "Dream", "SouthernRock", "Comedy", "Cult", "Gangsta", "Top", "ChristianRap", "Pop/Funk", "Jungle", "NativeUS", "Cabaret", "NewWave", "Psychadelic", "Rave", "Showtunes", "Trailer", "LoFi", "Tribal", "AcidPunk", "AcidJazz", "Polka", "Retro", "Musical", "Rock&Roll", "HardRock", "Folk", "FolkRock", "NationalFolk", "Swing", "FastFusion", "Bebob", "Latin", "Revival", "Celtic", "Bluegrass", "Avantgarde", "GothicRock", "ProgressiveRock", "PsychedelicRock", "SymphonicRock", "SlowRock", "BigBand", "Chorus", "EasyListening", "Acoustic", "Humour", "Speech", "Chanson", "Opera", "ChamberMusic", "Sonata", "Symphony", "BootyBass", "Primus", "PornGroove", "Satire", "SlowJam", "Club", "Tango", "Samba", "Folklore", "Ballad", "PowerBallad", "RhythmicSoul", "Freestyle", "Duet", "PunkRock", "DrumSolo", "Acapella", "EuroHouse", "DanceHall", "Goa", "Drum&Bass", "ClubHouse", "Hardcore", "Terror", "Indie", "BritPop", "Negerpunk", "PolskPunk", "Beat", "ChristianGangstaRap", "HeavyMetal", "BlackMetal", "Crossover", "ContemporaryChristian", "ChristianRock", "Merengue", "Salsa", "ThrashMetal", "Anime", "JPop", "Synthpop"};
 
@@ -21,6 +22,7 @@ public class Data {
         this.musicianEventsMap = new HashMap<>();
         this.musicianNotificationsMap = new HashMap<>();
         this.musicianProfileMap = new HashMap<>();
+        this.eventsList = new ArrayList<>();
 
         Musician musician1 =  new Musician("Jorge Daniel", "Guitar", "03/10/1995",
                 "Rock", "John Mayer", "musician@mail.com", "musician1");
@@ -56,6 +58,13 @@ public class Data {
         notificationList1.add(notification1);
         notificationList1.add(notification2);
         musicianNotificationsMap.put("musician@mail.com", notificationList1);
+        Event newEvent = new Event("https://i.ibb.co/PmqsXr7/Screenshot-2021-12-06-at-13-34-58.png","Jazz concert","New York","09/08/2022, 19:00",50,"Jazz","Jazz concert, all musicians or bands can apply","+121223454321");
+        Event newEvent2 = new Event("https://image.freepik.com/free-vector/abstract-geometric-shapes-music-festival-vertical-poster-template_23-2148984513.jpg","Music Fest","Lisbon","30/11/2022, 19:00",200,"World Music","Minimal Music fest, if you wanna join, please contact us","+351123456789");
+        Event newEvent3 = new Event("https://image.freepik.com/free-vector/music-festival-invitation-design-with-notes_1017-9868.jpg","Electronic music festival","Moscow","1/12/2022, 21:00",0,"electronic","djs who want to mix, can apply to us","+74992343234");
+        eventsList.add(newEvent);
+        eventsList.add(newEvent2);
+        eventsList.add(newEvent3);
+
 
     }
 
@@ -81,6 +90,16 @@ public class Data {
 
     public List<Notification> getMusicianRequests(String email) {
         return musicianNotificationsMap.get(email);
+    }
+
+    public List<Event> getPaidEvents(){
+        List<Event> paidEvents = new ArrayList<>();
+        eventsList.forEach(e -> {if(e.getPayment() != 0 ) paidEvents.add(e);});
+        return paidEvents;
+    }
+
+    public List<Event>getAllEvents(){
+        return eventsList;
     }
 
 }

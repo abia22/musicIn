@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.musicin.R;
+import com.example.musicin.data.Event;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public class SearchEventAdapter extends RecyclerView.Adapter<SearchEventAdapter.
     Context context;
     LayoutInflater inflater;
 
-    public SearchEventAdapter(Context ctx,List<String> images,List<String> titles ){
+    public SearchEventAdapter(Context ctx, List<String> ev, List<String> titles ){
         this.titles = titles;
         this.images = images;
         this.inflater = LayoutInflater.from(ctx);
