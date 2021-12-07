@@ -19,13 +19,19 @@ import com.example.musicin.adapters.SearchEventAdapter;
 import com.example.musicin.data.Data;
 import com.example.musicin.data.Event;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.datepicker.CalendarConstraints;
+import com.google.android.material.datepicker.DateValidatorPointForward;
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
 
 public class SearchEventsFragment extends Fragment {
-    private List<Event>events;
+    private List<Event>events = new ArrayList<>();
     boolean payment;
     boolean location;
     String genreFilter;
@@ -34,7 +40,7 @@ public class SearchEventsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search_events, container, false);
-        Data data = new Data();
+        Data data = Data.getInstance();
         SwitchMaterial switchPayment = view.findViewById(R.id.payment_event);
         payment = false;
         SwitchMaterial switchLocation = view.findViewById(R.id.location_event);
@@ -44,7 +50,7 @@ public class SearchEventsFragment extends Fragment {
         Spinner genres = view.findViewById(R.id.genre_event);
         genreFilter = null;
         RecyclerView list = view.findViewById(R.id.data_list);
-        events = new ArrayList<>();
+        list.setHasFixedSize(false);
         events = data.getAllEvents();
         SearchEventAdapter searchEventAdapter = new SearchEventAdapter(view.getContext(),events);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(view.getContext(),2,GridLayoutManager.VERTICAL,false);
@@ -54,7 +60,10 @@ public class SearchEventsFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 payment = isChecked;
-                events = data.applyFilter(payment,location,genreFilter,dateFilter);
+                List<Event> eventListFiltered;
+                eventListFiltered = data.applyFilter(payment,location,genreFilter,dateFilter);
+                System.out.println(eventListFiltered.size() + " " + payment);
+                searchEventAdapter.setItems(eventListFiltered);
             }
         });
         switchLocation.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -62,23 +71,54 @@ public class SearchEventsFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 location = isChecked;
                 events = data.applyFilter(payment,location,genreFilter,dateFilter);
-
+                searchEventAdapter.setItems(events);
             }
         });
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.clear();
+        long today = MaterialDatePicker.todayInUtcMilliseconds();
+        CalendarConstraints.Builder constraintBuilder = new CalendarConstraints.Builder();
+        constraintBuilder.setStart(today)
+                         .setValidator(DateValidatorPointForward.now());
+        MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker();
+        builder.setTitleText("Select a date");
+        builder.setSelection(today);
+        builder.setCalendarConstraints(constraintBuilder.build());
+        final MaterialDatePicker materialDatePicker  = builder.build();
 
         date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                materialDatePicker.show(getActivity().getSupportFragmentManager(), "DATE_PICKER");
             }
         });
 
-        genres.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onPositiveButtonClick(Object selection) {
+                dateFilter = materialDatePicker.getHeaderText();
+                date.setText(dateFilter);
+                List<Event> eventListFiltered;
+                eventListFiltered = data.applyFilter(payment,location,genreFilter,dateFilter);
+                searchEventAdapter.setItems(eventListFiltered);
 
             }
         });
+
+
+        genres.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         return view;
 
     }

@@ -26,6 +26,12 @@ public class SearchEventAdapter extends RecyclerView.Adapter<SearchEventAdapter.
         this.inflater = LayoutInflater.from(ctx);
     }
 
+    public void setItems(List<Event> myList) {
+        this.events.clear();
+        this.events.addAll(myList);
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

@@ -35,7 +35,7 @@ public class BandRequestDialog extends AppCompatDialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.band_request_dialog,null);
 
-        Data data = new Data();
+        Data data = Data.getInstance();
         Bundle bundle = getArguments();
         String email = bundle.getString("email");
         Musician user = data.getMusician(email);

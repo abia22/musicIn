@@ -22,26 +22,40 @@ import com.example.musicin.R;
 import com.example.musicin.adapters.EventsAdapter;
 import com.example.musicin.adapters.NotificationAdapter;
 import com.example.musicin.data.Band;
+import com.example.musicin.data.BandMember;
 import com.example.musicin.data.Data;
 import com.example.musicin.data.Event;
 import com.example.musicin.data.Musician;
+import com.example.musicin.data.MusicianProfile;
 import com.example.musicin.data.Notification;
 import com.example.musicin.data.Request;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
+
+    List<Notification> notificationsList;
+    NotificationAdapter notificationAdapter;
+    BandMembersAdapter membersAdapter;
+    Musician user;
+    Data data;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        Data data = new Data();
+        EventBus.getDefault().register(this);
+
+        data = Data.getInstance();
 
         Bundle bundle = getArguments();
         String email = bundle.getString("email");
-        Musician user = data.getMusician(email);
+        user = data.getMusician(email);
 
         RecyclerView members_rv = view.findViewById(R.id.members_rv);
         Spinner bands_sp = view.findViewById(R.id.my_bands_spinner);
@@ -65,8 +79,8 @@ public class HomeFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if(!bandNames.get(i).equals("No Bands Formed Yet")) {
-                    BandMembersAdapter adapter = new BandMembersAdapter(bandList.get(i).getMembers());
-                    members_rv.setAdapter(adapter);
+                    membersAdapter = new BandMembersAdapter(bandList.get(i).getMembers());
+                    members_rv.setAdapter(membersAdapter);
                     members_rv.setLayoutManager(new LinearLayoutManager(getContext()));
                     members_rv.addItemDecoration(divider);
                 }
@@ -87,19 +101,21 @@ public class HomeFragment extends Fragment {
         events_rv.addItemDecoration(divider);
 
         RecyclerView notifications_rv = view.findViewById(R.id.notification_rv);
-        List<Notification> notificationsList = data.getMusicianRequests(user.getEmail());
-        NotificationAdapter requestsAdapter = new NotificationAdapter(notificationsList);
-        notifications_rv.setAdapter(requestsAdapter);
+        notificationsList = data.getMusicianRequests(user.getEmail());
+        notificationAdapter = new NotificationAdapter(notificationsList);
+        notifications_rv.setAdapter(notificationAdapter);
         notifications_rv.setLayoutManager(new LinearLayoutManager(getContext()));
         notifications_rv.addItemDecoration(divider);
 
-        requestsAdapter.setOnItemClickListener(new NotificationAdapter.OnItemClickListener() {
+        notificationAdapter.setOnItemClickListener(new NotificationAdapter.OnItemClickListener() {
             @Override
             public void onItemCLick(int position) {
                 Notification notification = notificationsList.get(position);
                 if(notification instanceof Request){
                     Intent intent = new Intent(getActivity(), MusicianProfileActivity.class);
                     intent.putExtra("email", ((Request) notification).getEmail());
+                    intent.putExtra("position", position);
+                    intent.putExtra("band", ((Request) notification).getBandToJoin());
                     startActivity(intent);
                 }
             }
@@ -107,4 +123,42 @@ public class HomeFragment extends Fragment {
 
         return view;
     }
+
+    public static class MessageEvent {
+        public final boolean response;
+        public final int position;
+        public final String bandToJoin;
+        public final String emailNewMember;
+
+        public MessageEvent(boolean response, int position, String bandToJoin, String emailNewMember) {
+            this.response = response;
+            this.position = position;
+            this.bandToJoin = bandToJoin;
+            this.emailNewMember = emailNewMember;
+        }
+    }
+
+    @Subscribe
+    public void onEvent(MessageEvent event) {
+        notificationsList.remove(event.position);
+        notificationAdapter.notifyDataSetChanged();
+        if (event.response){                //if it's true then the user accepted the request
+            ArrayList<Band> userBands = user.getBands();
+            Musician musicianRequester = data.getMusician(event.emailNewMember);
+            MusicianProfile musicianProfileRequester = data.getMusicianProfile(event.emailNewMember);
+            BandMember newMember = new BandMember(musicianRequester.getName(), musicianRequester.getInstruments(), musicianProfileRequester.getPhoto());
+            for (int i = 0; i < userBands.size(); i++) {
+                Band band = userBands.get(i);
+                if(band.getName().equals(event.bandToJoin)){
+                    userBands.remove(band);
+                    band.addMember(newMember);
+                    userBands.add(band);
+                    user.setBands(userBands);
+                    membersAdapter.notifyDataSetChanged();
+                }
+            }
+        }
+
+    }
+
 }
