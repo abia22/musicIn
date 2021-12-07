@@ -19,7 +19,7 @@ public class BandRequestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_band_request);
         MaterialButton request = findViewById(R.id.requestJoinBand_bttn);
 
-        BandRequest bandRequest1 = new BandRequest(null,null,null);
+        BandRequest bandRequest1 = new BandRequest(null,null,null,null, null);
         List<String> instruments = bandRequest1.getInstruments();
 
         request.setOnClickListener(new View.OnClickListener() {

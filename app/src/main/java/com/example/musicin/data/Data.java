@@ -15,6 +15,7 @@ public class Data {
     Map<String, List<Notification>> musicianNotificationsMap;
     Map<String, MusicianProfile> musicianProfileMap;
     List<Event> eventsList;
+    List<BandRequest> bandRequestList;
     Musician musician1, musician2;
 
     public static final String[] genres = new String[] {"Blues", "ClassicRock", "Country", "Dance", "Disco", "Funk", "Grunge", "HipHop", "Jazz", "Metal", "NewAge", "Oldies", "Other", "Pop", "R&B", "Rap", "Reggae", "Rock", "Techno", "Industrial", "Alternative", "Ska", "DeathMetal", "Pranks", "Soundtrack", "EuroTechno", "Ambient", "TripHop", "Vocal", "Jazz+Funk", "Fusion", "Trance", "Classical", "Instrumental", "Acid", "House", "Game", "SoundClip", "Gospel", "Noise", "AlternativeRock", "Bass", "Soul", "Punk", "Space", "Meditative", "InstrumentalPop", "InstrumentalRock", "Ethnic", "Gothic", "Darkwave", "TechnoIndustrial", "Electronic", "PopFolk", "Eurodance", "Dream", "SouthernRock", "Comedy", "Cult", "Gangsta", "Top", "ChristianRap", "Pop/Funk", "Jungle", "NativeUS", "Cabaret", "NewWave", "Psychadelic", "Rave", "Showtunes", "Trailer", "LoFi", "Tribal", "AcidPunk", "AcidJazz", "Polka", "Retro", "Musical", "Rock&Roll", "HardRock", "Folk", "FolkRock", "NationalFolk", "Swing", "FastFusion", "Bebob", "Latin", "Revival", "Celtic", "Bluegrass", "Avantgarde", "GothicRock", "ProgressiveRock", "PsychedelicRock", "SymphonicRock", "SlowRock", "BigBand", "Chorus", "EasyListening", "Acoustic", "Humour", "Speech", "Chanson", "Opera", "ChamberMusic", "Sonata", "Symphony", "BootyBass", "Primus", "PornGroove", "Satire", "SlowJam", "Club", "Tango", "Samba", "Folklore", "Ballad", "PowerBallad", "RhythmicSoul", "Freestyle", "Duet", "PunkRock", "DrumSolo", "Acapella", "EuroHouse", "DanceHall", "Goa", "Drum&Bass", "ClubHouse", "Hardcore", "Terror", "Indie", "BritPop", "Negerpunk", "PolskPunk", "Beat", "ChristianGangstaRap", "HeavyMetal", "BlackMetal", "Crossover", "ContemporaryChristian", "ChristianRock", "Merengue", "Salsa", "ThrashMetal", "Anime", "JPop", "Synthpop"};
@@ -29,6 +30,7 @@ public class Data {
         this.musicianNotificationsMap = new HashMap<>();
         this.musicianProfileMap = new HashMap<>();
         this.eventsList = new ArrayList<>();
+        this.bandRequestList = new ArrayList<>();
 
         musician1 =  new Musician("Jorge Daniel", "Guitar", "03/10/1995",
                 "Rock", "John Mayer", "musician@mail.com", "musician1");
@@ -50,11 +52,8 @@ public class Data {
         Band band = new Band("King Red", memberList);
         musician1.addBand(band);
 
-        List<String> bandRequestInstruments = new ArrayList<>();
-        bandRequestInstruments.add("Guitar");
-        bandRequestInstruments.add("Drums");
-        bandRequestInstruments.add("Singer");
-        BandRequest bandRequest = new BandRequest(bandRequestInstruments, "Rock",null);
+
+
 
         musicianMap.put("musician@mail.com", musician1);
         musicianMap.put("musician2@mail.com", musician2);
@@ -140,5 +139,16 @@ public class Data {
     }
 
 
+    public List<BandRequest> getAllRequests() {
+        bandRequestList.clear();
+        List<String> bandRequestInstruments = new ArrayList<>();
+        bandRequestInstruments.add("Guitar");
+        bandRequestInstruments.add("Drums");
+        bandRequestInstruments.add("Singer");
+        BandRequest bandRequest1 = new BandRequest(bandRequestInstruments, "Rock",null, "Fire", "https://image.freepik.com/fotos-gratis/inspiracao-banda-de-musicos-tocando-juntos-no-local-de-trabalho-de-arte-com-instrumentos_155003-16972.jpg");
 
+        bandRequestList.add(bandRequest1);
+
+        return bandRequestList;
+    }
 }
