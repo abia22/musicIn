@@ -49,9 +49,9 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        EventBus.getDefault().register(this);
-
         data = Data.getInstance();
+
+        EventBus.getDefault().register(this);
 
         Bundle bundle = getArguments();
         String email = bundle.getString("email");
@@ -161,4 +161,9 @@ public class HomeFragment extends Fragment {
 
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
 }
