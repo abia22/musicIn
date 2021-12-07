@@ -9,16 +9,33 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.musicin.AddFormBandRequestActivity;
 import com.example.musicin.R;
+import com.example.musicin.adapters.SearchEventAdapter;
+import com.example.musicin.adapters.SearchMemberAdapter;
+import com.example.musicin.data.BandRequest;
+import com.example.musicin.data.Data;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.List;
 
 public class SearchMembersFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search_members, container, false);
+        Data data = Data.getInstance();
+
+        RecyclerView list = view.findViewById(R.id.data_list_members);
+        list.setHasFixedSize(false);
+        List<BandRequest> requests = data.getAllRequests();
+        SearchMemberAdapter searchMemberAdapter = new SearchMemberAdapter(view.getContext(),requests);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(view.getContext(),2,GridLayoutManager.VERTICAL,false);
+        list.setLayoutManager(gridLayoutManager);
+        list.setAdapter(searchMemberAdapter);
 
         FloatingActionButton add_request_bttn = view.findViewById(R.id.add_request_fab);
         add_request_bttn.setOnClickListener(new View.OnClickListener() {

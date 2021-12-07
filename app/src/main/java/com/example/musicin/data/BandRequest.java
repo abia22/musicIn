@@ -7,11 +7,31 @@ public class BandRequest {
     private List<String> instruments;
     private String genre;
     private List<BandMember> members;
+    private String name;
+    private String photo;
 
-    public BandRequest(List<String> instruments, String genre, List<BandMember> members){
+    public BandRequest(List<String> instruments, String genre, List<BandMember> members, String name, String photo) {
         this.genre = genre;
         this.members = members;
         this.instruments = instruments;
+        this.name = name;
+        this.photo = photo;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getPhoto() {
+        return photo;
     }
 
     public String getGenre() {
