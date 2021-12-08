@@ -21,6 +21,8 @@ public class Data {
 
     public static final String[] genres = new String[] {"Blues", "ClassicRock", "Country", "Dance", "Disco", "Funk", "Grunge", "HipHop", "Jazz", "Metal", "NewAge", "Oldies", "Other", "Pop", "R&B", "Rap", "Reggae", "Rock", "Techno", "Industrial", "Alternative", "Ska", "DeathMetal", "Pranks", "Soundtrack", "EuroTechno", "Ambient", "TripHop", "Vocal", "Jazz+Funk", "World Music", "Fusion", "Trance", "Classical", "Instrumental", "Acid", "House", "Game", "SoundClip", "Gospel", "Noise", "AlternativeRock", "Bass", "Soul", "Punk", "Space", "Meditative", "InstrumentalPop", "InstrumentalRock", "Ethnic", "Gothic", "Darkwave", "TechnoIndustrial", "Electronic", "PopFolk", "Eurodance", "Dream", "SouthernRock", "Comedy", "Cult", "Gangsta", "Top", "ChristianRap", "Pop/Funk", "Jungle", "NativeUS", "Cabaret", "NewWave", "Psychadelic", "Rave", "Showtunes", "Trailer", "LoFi", "Tribal", "AcidPunk", "AcidJazz", "Polka", "Retro", "Musical", "Rock&Roll", "HardRock", "Folk", "FolkRock", "NationalFolk", "Swing", "FastFusion", "Bebob", "Latin", "Revival", "Celtic", "Bluegrass", "Avantgarde", "GothicRock", "ProgressiveRock", "PsychedelicRock", "SymphonicRock", "SlowRock", "BigBand", "Chorus", "EasyListening", "Acoustic", "Humour", "Speech", "Chanson", "Opera", "ChamberMusic", "Sonata", "Symphony", "BootyBass", "Primus", "PornGroove", "Satire", "SlowJam", "Club", "Tango", "Samba", "Folklore", "Ballad", "PowerBallad", "RhythmicSoul", "Freestyle", "Duet", "PunkRock", "DrumSolo", "Acapella", "EuroHouse", "DanceHall", "Goa", "Drum&Bass", "ClubHouse", "Hardcore", "Terror", "Indie", "BritPop", "Negerpunk", "PolskPunk", "Beat", "ChristianGangstaRap", "HeavyMetal", "BlackMetal", "Crossover", "ContemporaryChristian", "ChristianRock", "Merengue", "Salsa", "ThrashMetal", "Anime", "JPop", "Synthpop"};
 
+    public static final String[] instruments = new String[] {"Singer","Accordion","Banjo","Bass guitar","Bongo","Cello","Clarinet","Cymbal","Drums","Euphonium","Flute","Harmonica","Gong","Guitar","Harmonica","Harp","Hammered dulcimer","Lute","Lyre","Mandolin","Marimba","Piano","Piccolo","Saxophone","Tambourine","Trumpet","Tuba","Ukulele","Viola","Violin","Xylophone"};
+
     public static Data getInstance(){ return  instance;}
 
     private  static Data instance = new Data();
@@ -143,6 +145,20 @@ public class Data {
 
     }
 
+    public List<BandRequest> applyFilterMembers(String genre, String instrument){
+        List<BandRequest> filteredBandRequests = new ArrayList<>();
+        filteredBandRequests.addAll(getAllRequests());
+
+        if(genre != null){
+            filteredBandRequests = filteredBandRequests.stream().filter(bandRequest -> bandRequest.getGenre().equalsIgnoreCase(genre)).collect(Collectors.toList());
+        }
+
+        if(instrument != null){
+            filteredBandRequests = filteredBandRequests.stream().filter(bandRequest -> bandRequest.getInstruments().contains(instrument)).collect(Collectors.toList());
+        }
+
+        return filteredBandRequests;
+    }
 
     public List<BandRequest> getAllRequests() {
         bandRequestList.clear();

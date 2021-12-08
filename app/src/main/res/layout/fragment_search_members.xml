@@ -26,11 +26,16 @@
                 android:text="Filter by"
                 android:textSize="25sp" />
 
-            <com.google.android.material.switchmaterial.SwitchMaterial
-                android:id="@+id/location_event"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/genre_members"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Near Me" />
+                android:text="Genre"
+                android:textColor="@color/black"
+                app:icon="@drawable/genres"
+                app:strokeColor="@color/grey_end"
+                app:strokeWidth="1dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/instrument_members"
@@ -46,25 +51,21 @@
                 android:layout_marginStart="20dp"/>
 
         </LinearLayout>
-
+<!--
         <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="99dp">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/genre_members"
-                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/location_band"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Genre"
-                android:textColor="@color/black"
-                app:icon="@drawable/genres"
-                app:strokeColor="@color/grey_end"
-                app:strokeWidth="1dp" />
+                android:text="Near Me" />
 
         </LinearLayout>
-
+-->
     </LinearLayout>
 
 

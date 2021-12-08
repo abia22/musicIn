@@ -9,29 +9,45 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.musicin.AddFormBandRequestActivity;
 import com.example.musicin.BandRequestActivity;
+import com.example.musicin.GenreDialog;
+import com.example.musicin.InstrumentDialog;
 import com.example.musicin.R;
 import com.example.musicin.adapters.SearchEventAdapter;
 import com.example.musicin.adapters.SearchMemberAdapter;
 import com.example.musicin.data.BandRequest;
 import com.example.musicin.data.Data;
+import com.example.musicin.data.Event;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import java.util.List;
 
 public class SearchMembersFragment extends Fragment {
 
     private SearchMemberAdapter memberAdapter;
+    String instrumentFilter;
+    String genreFilter;
+    MaterialButton genres;
+    MaterialButton instruments;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search_members, container, false);
         Data data = Data.getInstance();
+
+        genres = view.findViewById(R.id.genre_members);
+        genreFilter = null;
+        instruments = view.findViewById(R.id.instrument_members);
+        instrumentFilter = null;
+
 
         RecyclerView members_rv = view.findViewById(R.id.data_list_members);
         members_rv.setHasFixedSize(false);
@@ -56,6 +72,43 @@ public class SearchMembersFragment extends Fragment {
                Intent intent = new Intent(getActivity(), BandRequestActivity.class);
                intent.putExtra("Request",request);
                startActivity(intent);
+            }
+        });
+
+        genres.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GenreDialog genreDialog = new GenreDialog();
+                genreDialog.show(getParentFragmentManager(), "Genre Dialog");
+                genreDialog.getParentFragmentManager().setFragmentResultListener("requestKey", getViewLifecycleOwner(), new FragmentResultListener(){
+                    @Override
+                    public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                        genreFilter = result.getString("bundleKey");
+                        genres.setText(genreFilter);
+                        List<BandRequest> bandRequestListFiltered;
+                        bandRequestListFiltered = data.applyFilterMembers(genreFilter,instrumentFilter);
+                        memberAdapter.setItems(bandRequestListFiltered);
+                    }
+                });
+            }
+        });
+
+
+        instruments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                InstrumentDialog instrumentDialog = new InstrumentDialog();
+                instrumentDialog.show(getParentFragmentManager(), "Instrument Dialog");
+                instrumentDialog.getParentFragmentManager().setFragmentResultListener("requestKey", getViewLifecycleOwner(), new FragmentResultListener(){
+                    @Override
+                    public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                        instrumentFilter = result.getString("bundleKey");
+                        instruments.setText(instrumentFilter);
+                        List<BandRequest> bandRequestListFiltered;
+                        bandRequestListFiltered = data.applyFilterMembers(genreFilter,instrumentFilter);
+                        memberAdapter.setItems(bandRequestListFiltered);
+                    }
+                });
             }
         });
 
