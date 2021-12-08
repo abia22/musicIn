@@ -8,9 +8,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
+import androidx.fragment.app.DialogFragment;
 
 import com.example.musicin.data.BandRequest;
 import com.example.musicin.data.Data;
@@ -20,24 +25,24 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BandRequestDialog extends AppCompatDialogFragment {
-
+public class BandRequestDialog extends DialogFragment {
     private TextInputEditText instrumentText;
-    private List<String> instrumentsRequest;
+    private ArrayList<String> instrumentsRequest;
 
-    public BandRequestDialog(List<String> instruments){
-        this.instrumentsRequest = instruments;
-    }
-
-    public Dialog OnCreateDialog(Bundle savedInstanceState){
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.band_request_dialog,null);
 
+
+
         Data data = Data.getInstance();
         Bundle bundle = getArguments();
         String email = bundle.getString("email");
+        instrumentsRequest = bundle.getStringArrayList("instruments");
         Musician user = data.getMusician(email);
 
         String instrumentsUser = user.getInstruments();
@@ -55,24 +60,25 @@ public class BandRequestDialog extends AppCompatDialogFragment {
         }
 
 
+        RadioGroup radio = view.findViewById(R.id.instrument_radio_group);
 
-        Spinner s = view.findViewById(R.id.instrument_spinner);
-        ArrayAdapter<String> instrumentsAdapter = new ArrayAdapter<String>(getContext(), R.layout.spinner_item,instrumentsPossible);
-        instrumentsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        s.setAdapter(instrumentsAdapter);
+        for (String instrument: instrumentsPossible) {
+            RadioButton radioButton = new RadioButton(getContext());
+            radioButton.setText(instrument);
+            radio.addView(radioButton);
+        }
+
+
+
 
         builder.setView(view)
                 .setTitle("Choose Instrument")
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                })
-                .setPositiveButton("Submit", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
+                        int radioId = radio.getCheckedRadioButtonId();
+                        RadioButton radioButton = view.findViewById(radioId);
+                        String chosenInstrument = radioButton.getText().toString();
                     }
                 });
         //instrument = view.findViewById(R.id.instrument_dialog);

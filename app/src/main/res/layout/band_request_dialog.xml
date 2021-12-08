@@ -3,25 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/gradient_grey">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/instrument_dialog"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Choose the instrument you are going to play"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_above="@+id/instrument_spinner"
-        android:layout_centerHorizontal="true"/>
-
-    <Spinner
-        android:id="@+id/instrument_spinner"
+    <RadioGroup
+        android:id="@+id/instrument_radio_group"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
+        android:layout_height="wrap_content"/>
 
 </RelativeLayout>

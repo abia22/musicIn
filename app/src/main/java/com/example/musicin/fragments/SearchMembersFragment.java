@@ -49,6 +49,7 @@ public class SearchMembersFragment extends Fragment {
         instrumentFilter = null;
 
 
+        String email = getArguments().getString("email");
         RecyclerView members_rv = view.findViewById(R.id.data_list_members);
         members_rv.setHasFixedSize(false);
         List<BandRequest> requests = data.getAllRequests();
@@ -71,6 +72,7 @@ public class SearchMembersFragment extends Fragment {
                BandRequest request  = memberAdapter.getRequest(position);
                Intent intent = new Intent(getActivity(), BandRequestActivity.class);
                intent.putExtra("Request",request);
+               intent.putExtra("email",email);
                startActivity(intent);
             }
         });

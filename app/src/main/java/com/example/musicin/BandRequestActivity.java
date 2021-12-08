@@ -16,16 +16,19 @@ import com.example.musicin.data.BandRequest;
 import com.google.android.material.button.MaterialButton;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BandRequestActivity extends AppCompatActivity {
     String  instruments = "";
+    String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_band_request);
         MaterialButton request = findViewById(R.id.requestJoinBand_bttn);
         BandRequest br = getIntent().getParcelableExtra("Request");
+        email = getIntent().getStringExtra("email");
         TextView instrumentList = findViewById(R.id.instrumentsInNeed);
         TextView bandName = findViewById(R.id.bandName);
         ImageView bandPhoto = findViewById(R.id.band_photo);
@@ -52,7 +55,13 @@ public class BandRequestActivity extends AppCompatActivity {
     }
 
     public void openDialog(List<String> instruments){
-        BandRequestDialog dialog = new BandRequestDialog(instruments);
+        ArrayList<String> instrumentsArrayList = new ArrayList<>();
+        instrumentsArrayList.addAll(instruments);
+        BandRequestDialog dialog = new BandRequestDialog();
+        Bundle bundle = new Bundle();
+        bundle.putStringArrayList("instruments", instrumentsArrayList);
+        bundle.putString("email",email);
+        dialog.setArguments(bundle);
         dialog.show(getSupportFragmentManager(),"dialog");
     }
 }
