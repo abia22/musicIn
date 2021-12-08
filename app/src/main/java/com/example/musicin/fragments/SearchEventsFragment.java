@@ -48,6 +48,10 @@ public class SearchEventsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_search_events, container, false);
 
         Data data = Data.getInstance();
+
+        Bundle bundle = getArguments();
+        String email = bundle.getString("email");
+
         SwitchMaterial switchPayment = view.findViewById(R.id.payment_event);
         payment = false;
         SwitchMaterial switchLocation = view.findViewById(R.id.location_event);
@@ -70,6 +74,7 @@ public class SearchEventsFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), RequestEventActivity.class);
                 Event event = searchEventAdapter.getEvent(position);
                 intent.putExtra("event", event);
+                intent.putExtra("email", email);
                 startActivity(intent);
             }
         });

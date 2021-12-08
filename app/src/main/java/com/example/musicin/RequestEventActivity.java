@@ -4,13 +4,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentResultListener;
 
+import com.example.musicin.data.Band;
+import com.example.musicin.data.Data;
 import com.example.musicin.data.Event;
+import com.example.musicin.data.Musician;
 import com.google.android.material.button.MaterialButton;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class RequestEventActivity extends AppCompatActivity {
@@ -19,7 +28,11 @@ public class RequestEventActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_event);
 
+        Data data = Data.getInstance();
+
         Event event = getIntent().getParcelableExtra("event");
+        String email = getIntent().getStringExtra("email");
+        Musician musician = data.getMusician(email);
 
         TextView name_tv = findViewById(R.id.event_name_request_txt);
         ImageView photo_iv = findViewById(R.id.event_request_photo);
@@ -37,7 +50,29 @@ public class RequestEventActivity extends AppCompatActivity {
         sendRequest_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                List<Band> bandList = musician.getBands();
+                if(bandList.isEmpty()){
+                    CharSequence text = "You can only request to join an event if you have formed a band!";
+                    Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG);
+                    toast.show();
+                }
+                ArrayList<String> bandNames = new ArrayList<>(bandList.size());
+                for (Band band: bandList) {
+                    bandNames.add(band.getName());
+                }
+                SelectBandDialog selectBandDialog = new SelectBandDialog();
+                Bundle bundle = new Bundle();
+                bundle.putStringArrayList("bands", bandNames);
+                selectBandDialog.setArguments(bundle);
+                selectBandDialog.show(getSupportFragmentManager(), "Select a band Dialog");
+                selectBandDialog.getParentFragmentManager().setFragmentResultListener("requestKey", RequestEventActivity.this, new FragmentResultListener() {
+                    @Override
+                    public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                        String chosenBand = result.getString("bundleKey");
+                        //TODO: ADD REQUEST TO MUSICIAN IN DATA
+                        finish();
+                    }
+                });
             }
         });
     }
