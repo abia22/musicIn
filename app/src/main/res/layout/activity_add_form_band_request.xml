@@ -56,9 +56,10 @@
                         android:id="@+id/genre_actv"
                         android:layout_width="180dp"
                         android:layout_height="wrap_content"
-                        android:hint="@string/insert_genre"
                         android:completionHint="@string/insert_genre"
-                        android:completionThreshold="1"/>
+                        android:completionThreshold="1"
+                        android:hint="@string/insert_genre"
+                        android:maxLines="1"/>
                 </RelativeLayout>
 
             </LinearLayout>
@@ -93,7 +94,8 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:ems="10"
-                    android:hint="@string/enter_instrument_here" />
+                    android:hint="@string/enter_instrument_here"
+                    android:maxLines="1"/>
 
                 <ImageView
                     android:id="@+id/add_item"
@@ -146,7 +148,8 @@
                     android:layout_centerVertical="true"
                     android:ems="10"
                     android:hint="@string/add_member"
-                    android:inputType="textAutoCorrect" />
+                    android:inputType="textAutoCorrect"
+                    android:maxLines="1"/>
 
                 <ImageView
                     android:id="@+id/add_member_img"

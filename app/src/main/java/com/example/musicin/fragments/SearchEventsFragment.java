@@ -11,9 +11,11 @@ import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.musicin.GenreDialog;
 import com.example.musicin.R;
 import com.example.musicin.adapters.SearchEventAdapter;
 import com.example.musicin.data.Data;
@@ -36,10 +38,13 @@ public class SearchEventsFragment extends Fragment {
     boolean location;
     String genreFilter;
     String dateFilter;
+    MaterialButton genres;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search_events, container, false);
+
         Data data = Data.getInstance();
         SwitchMaterial switchPayment = view.findViewById(R.id.payment_event);
         payment = false;
@@ -47,7 +52,7 @@ public class SearchEventsFragment extends Fragment {
         location = false;
         MaterialButton date = view.findViewById(R.id.date_event);
         dateFilter = null;
-        Spinner genres = view.findViewById(R.id.genre_event);
+        genres = view.findViewById(R.id.genre_event);
         genreFilter = null;
         RecyclerView list = view.findViewById(R.id.data_list);
         list.setHasFixedSize(false);
@@ -107,19 +112,26 @@ public class SearchEventsFragment extends Fragment {
         });
 
 
-        genres.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        genres.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
+            public void onClick(View view) {
+                GenreDialog genreDialog = new GenreDialog();
+                genreDialog.show(getParentFragmentManager(), "Genre Dialog");
+                genreDialog.getParentFragmentManager().setFragmentResultListener("requestKey", getViewLifecycleOwner(), new FragmentResultListener(){
+                    @Override
+                    public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                        genreFilter = result.getString("bundleKey");
+                        genres.setText(genreFilter);
+                        List<Event> eventListFiltered;
+                        eventListFiltered = data.applyFilter(payment,location,genreFilter,dateFilter);
+                        searchEventAdapter.setItems(eventListFiltered);
+                    }
+                });
             }
         });
 
         return view;
 
     }
+
 }
