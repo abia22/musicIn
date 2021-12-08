@@ -52,8 +52,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         photo.setImageResource(notification.getPhoto());
         TextView request_text = holder.request_text;
         request_text.setText(notification.getRequest_text());
-
-
     }
 
     @Override

@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.musicin.MusicianProfileActivity;
 import com.example.musicin.adapters.BandMembersAdapter;
 import com.example.musicin.R;
-import com.example.musicin.adapters.EventsAdapter;
+import com.example.musicin.adapters.HomepageEventsAdapter;
 import com.example.musicin.adapters.NotificationAdapter;
 import com.example.musicin.data.Band;
 import com.example.musicin.data.BandMember;
@@ -95,8 +95,8 @@ public class HomeFragment extends Fragment {
 
         RecyclerView events_rv = view.findViewById(R.id.events_rv);
         List<Event> eventList = data.getMusicianEvents(user.getEmail());
-        EventsAdapter eventsAdapter = new EventsAdapter(eventList);
-        events_rv.setAdapter(eventsAdapter);
+        HomepageEventsAdapter homepageEventsAdapter = new HomepageEventsAdapter(eventList);
+        events_rv.setAdapter(homepageEventsAdapter);
         events_rv.setLayoutManager(new LinearLayoutManager(getContext()));
         events_rv.addItemDecoration(divider);
 

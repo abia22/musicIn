@@ -17,9 +17,17 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class SearchEventAdapter extends RecyclerView.Adapter<SearchEventAdapter.ViewHolder> {
-    List<Event> events;
-    Context context;
+    private List<Event> events;
     LayoutInflater inflater;
+    private OnItemClickListener listener;
+
+    public interface OnItemClickListener{
+        void OnItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
 
     public SearchEventAdapter(Context ctx, List<Event> events){
         this.events = events;
@@ -36,7 +44,7 @@ public class SearchEventAdapter extends RecyclerView.Adapter<SearchEventAdapter.
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.grid,parent,false);
-        return new ViewHolder(view);
+        return new ViewHolder(view, listener);
     }
 
     @Override
@@ -54,10 +62,22 @@ public class SearchEventAdapter extends RecyclerView.Adapter<SearchEventAdapter.
         TextView title;
         ImageView gridIcon;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, OnItemClickListener listener) {
             super(itemView);
             title = itemView.findViewById(R.id.search_title);
             gridIcon = itemView.findViewById(R.id.search_image);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (listener != null) {
+                        int position = getAbsoluteAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION){
+                            listener.OnItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 }

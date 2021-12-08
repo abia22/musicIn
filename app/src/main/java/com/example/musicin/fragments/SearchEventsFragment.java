@@ -1,5 +1,6 @@
 package com.example.musicin.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.musicin.GenreDialog;
 import com.example.musicin.R;
+import com.example.musicin.RequestEventActivity;
 import com.example.musicin.adapters.SearchEventAdapter;
 import com.example.musicin.data.Data;
 import com.example.musicin.data.Event;
@@ -54,13 +56,21 @@ public class SearchEventsFragment extends Fragment {
         dateFilter = null;
         genres = view.findViewById(R.id.genre_event);
         genreFilter = null;
-        RecyclerView list = view.findViewById(R.id.data_list);
-        list.setHasFixedSize(false);
+
+        RecyclerView events_rv = view.findViewById(R.id.data_list);
+        events_rv.setHasFixedSize(false);
         events = data.getAllEvents();
         SearchEventAdapter searchEventAdapter = new SearchEventAdapter(view.getContext(),events);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(view.getContext(),2,GridLayoutManager.VERTICAL,false);
-        list.setLayoutManager(gridLayoutManager);
-        list.setAdapter(searchEventAdapter);
+        events_rv.setLayoutManager(gridLayoutManager);
+        events_rv.setAdapter(searchEventAdapter);
+        searchEventAdapter.setOnItemClickListener(new SearchEventAdapter.OnItemClickListener() {
+            @Override
+            public void OnItemClick(int position) {
+                Intent intent = new Intent(getActivity(), RequestEventActivity.class);
+                startActivity(intent);
+            }
+        });
         switchPayment.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

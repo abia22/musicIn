@@ -16,10 +16,10 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder> {
+public class HomepageEventsAdapter extends RecyclerView.Adapter<HomepageEventsAdapter.ViewHolder> {
     private List<Event> eventList;
 
-    public EventsAdapter(List<Event> eventList){
+    public HomepageEventsAdapter(List<Event> eventList){
         this.eventList = eventList;
     }
 
