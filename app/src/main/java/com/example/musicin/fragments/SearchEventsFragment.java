@@ -68,6 +68,8 @@ public class SearchEventsFragment extends Fragment {
             @Override
             public void OnItemClick(int position) {
                 Intent intent = new Intent(getActivity(), RequestEventActivity.class);
+                Event event = searchEventAdapter.getEvent(position);
+                intent.putExtra("event", event);
                 startActivity(intent);
             }
         });
@@ -77,7 +79,6 @@ public class SearchEventsFragment extends Fragment {
                 payment = isChecked;
                 List<Event> eventListFiltered;
                 eventListFiltered = data.applyFilter(payment,location,genreFilter,dateFilter);
-                System.out.println(eventListFiltered.size() + " " + payment);
                 searchEventAdapter.setItems(eventListFiltered);
             }
         });

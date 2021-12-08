@@ -80,4 +80,8 @@ public class SearchEventAdapter extends RecyclerView.Adapter<SearchEventAdapter.
             });
         }
     }
+
+    public Event getEvent(int position) {
+        return events.get(position);
+    }
 }

@@ -72,7 +72,7 @@ public class Data {
         musicianNotificationsMap.put("musician@mail.com", notificationList1);
         Event newEvent = new Event("https://i.ibb.co/PmqsXr7/Screenshot-2021-12-06-at-13-34-58.png","Jazz concert","New York","09/08/2022, 19:00",50,"Jazz","Jazz concert, all musicians or bands can apply","+121223454321",213412);
         Event newEvent2 = new Event("https://image.freepik.com/free-vector/abstract-geometric-shapes-music-festival-vertical-poster-template_23-2148984513.jpg","Music Fest","Lisbon","30/11/2022, 19:00",200,"World Music","Minimal Music fest, if you wanna join, please contact us","+351123456789",122334);
-        Event newEvent3 = new Event("https://image.freepik.com/free-vector/music-festival-invitation-design-with-notes_1017-9868.jpg","Electronic music festival","Moscow","1/12/2022, 21:00",0,"electronic","djs who want to mix, can apply to us","+74992343234",1234566);
+        Event newEvent3 = new Event("https://image.freepik.com/free-vector/music-festival-invitation-design-with-notes_1017-9868.jpg","Electronic music festival","Moscow","1/12/2022, 21:00",0,"electronic","Djs who want to mix, can apply to us","+74992343234",1234566);
         eventsList.add(newEvent);
         eventsList.add(newEvent2);
         eventsList.add(newEvent3);

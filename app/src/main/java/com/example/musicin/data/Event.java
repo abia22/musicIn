@@ -1,6 +1,9 @@
 package com.example.musicin.data;
 
-public class Event {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Event implements Parcelable {
     private String photo;
     private String name;
     private String location;
@@ -18,6 +21,30 @@ public class Event {
         this.date = date;
     }
 
+
+    protected Event(Parcel in) {
+        photo = in.readString();
+        name = in.readString();
+        location = in.readString();
+        date = in.readString();
+        payment = in.readInt();
+        genre = in.readString();
+        info = in.readString();
+        contact = in.readString();
+        distance = in.readInt();
+    }
+
+    public static final Creator<Event> CREATOR = new Creator<Event>() {
+        @Override
+        public Event createFromParcel(Parcel in) {
+            return new Event(in);
+        }
+
+        @Override
+        public Event[] newArray(int size) {
+            return new Event[size];
+        }
+    };
 
     public int getPayment() {
         return payment;
@@ -101,5 +128,23 @@ public class Event {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(photo);
+        parcel.writeString(name);
+        parcel.writeString(location);
+        parcel.writeString(date);
+        parcel.writeInt(payment);
+        parcel.writeString(genre);
+        parcel.writeString(info);
+        parcel.writeString(contact);
+        parcel.writeInt(distance);
     }
 }
