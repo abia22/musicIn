@@ -21,10 +21,21 @@ public class SearchMemberAdapter extends RecyclerView.Adapter<SearchMemberAdapte
     List<BandRequest> bandRequests;
     Context context;
     LayoutInflater inflater;
+    OnItemClickListener mListener;
+
+    public interface OnItemClickListener{
+        void OnItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        mListener = listener;
+    }
 
     public SearchMemberAdapter(Context ctx, List<BandRequest> bandRequests){
         this.bandRequests = bandRequests;
         this.inflater = LayoutInflater.from(ctx);
+
+
     }
 
     public void setItems(List<BandRequest> myList) {
@@ -37,7 +48,7 @@ public class SearchMemberAdapter extends RecyclerView.Adapter<SearchMemberAdapte
     @Override
     public SearchMemberAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.grid,parent,false);
-        return new ViewHolder(view);
+        return new ViewHolder(view,mListener);
     }
 
     @Override
@@ -51,15 +62,30 @@ public class SearchMemberAdapter extends RecyclerView.Adapter<SearchMemberAdapte
         return bandRequests.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView title;
         ImageView gridIcon;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView,OnItemClickListener listener ) {
             super(itemView);
             title = itemView.findViewById(R.id.search_title);
             gridIcon = itemView.findViewById(R.id.search_image);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listener != null){
+                        int position = getBindingAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION){
+                            listener.OnItemClick(position);
+                        }
+                    }
+                }
+            });
         }
+    }
+
+    public BandRequest getRequest(int position){
+        return bandRequests.get(position);
     }
 }

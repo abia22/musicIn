@@ -150,10 +150,15 @@ public class Data {
         bandRequestInstruments.add("Guitar");
         bandRequestInstruments.add("Drums");
         bandRequestInstruments.add("Singer");
-        BandRequest bandRequest1 = new BandRequest(bandRequestInstruments, "Rock",null, "Fire", "https://image.freepik.com/fotos-gratis/inspiracao-banda-de-musicos-tocando-juntos-no-local-de-trabalho-de-arte-com-instrumentos_155003-16972.jpg");
+        List<BandMember> bandMembers = new ArrayList<>();
+        BandMember member1 = new BandMember("Bob","Guitar","https://image.freepik.com/free-photo/guitarist-plays-electric-guitar-with-bright-emotions-grey-background_186202-4755.jpg");
+        bandMembers.add(member1);
+        BandRequest bandRequest1 = new BandRequest(bandRequestInstruments, "Rock",bandMembers, "Fire", "https://image.freepik.com/fotos-gratis/inspiracao-banda-de-musicos-tocando-juntos-no-local-de-trabalho-de-arte-com-instrumentos_155003-16972.jpg");
 
         bandRequestList.add(bandRequest1);
 
         return bandRequestList;
     }
+
+
 }

@@ -95,13 +95,24 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="50dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="50dp"
                 android:layout_marginRight="100dp"
                 android:text="Instruments in need"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp"
+                />
+
+            <TextView
+                android:id="@+id/already_assigned"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Already assigned members"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+
+                android:textSize="35dp"
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView

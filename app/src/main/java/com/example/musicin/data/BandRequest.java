@@ -1,8 +1,11 @@
 package com.example.musicin.data;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
-public class BandRequest {
+public class BandRequest implements Parcelable {
 
     private List<String> instruments;
     private String genre;
@@ -17,6 +20,26 @@ public class BandRequest {
         this.name = name;
         this.photo = photo;
     }
+
+    protected BandRequest(Parcel in) {
+        instruments = in.createStringArrayList();
+        genre = in.readString();
+        members = in.createTypedArrayList(BandMember.CREATOR);
+        name = in.readString();
+        photo = in.readString();
+    }
+
+    public static final Creator<BandRequest> CREATOR = new Creator<BandRequest>() {
+        @Override
+        public BandRequest createFromParcel(Parcel in) {
+            return new BandRequest(in);
+        }
+
+        @Override
+        public BandRequest[] newArray(int size) {
+            return new BandRequest[size];
+        }
+    };
 
     public String getName() {
         return name;
@@ -58,4 +81,17 @@ public class BandRequest {
         this.members = members;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeStringList(instruments);
+        dest.writeString(genre);
+        dest.writeTypedList(members);
+        dest.writeString(name);
+        dest.writeString(photo);
+    }
 }
