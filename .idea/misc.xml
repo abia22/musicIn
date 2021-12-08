@@ -21,6 +21,7 @@
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/activity_musician_email_pwd_sign_in.xml" value="0.15390625" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/activity_musician_hub.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/activity_musician_profile.xml" value="0.1953551912568306" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/activity_musician_sgin_in.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/activity_musician_sign_in.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/activity_musician_sign_up.xml" value="0.15390625" />
@@ -29,13 +30,16 @@
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/activity_select_ind_ent.xml" value="0.33" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/activity_select_mus_tec.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/band_member_row.xml" value="0.5" />
+        <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/band_request_dialog.xml" value="0.275" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/event_row.xml" value="0.5" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/fragment_musician_profile.xml" value="0.275" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/fragment_search_events.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/fragment_search_members.xml" value="0.25" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/grid.xml" value="0.25" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/num_del_row.xml" value="0.275" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/request_row.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/select_genre_dialog.xml" value="0.275" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/spinner_item.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/toolbar.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/menu/bottom_navigation.xml" value="0.36666666666666664" />
