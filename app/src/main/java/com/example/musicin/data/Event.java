@@ -9,6 +9,7 @@ public class Event {
     private String genre;
     private String info;
     private String contact;
+    private int distance;
 
     public Event(String photo, String name, String location, String date) {
         this.photo = photo;
@@ -50,7 +51,15 @@ public class Event {
         this.contact = contact;
     }
 
-    public Event(String photo, String name, String location, String date, int payment, String genre, String info, String contact) {
+    public int getDistance() {
+        return distance;
+    }
+
+    public void setDistance(int distance) {
+        this.distance = distance;
+    }
+
+    public Event(String photo, String name, String location, String date, int payment, String genre, String info, String contact, int distance) {
         this.photo = photo;
         this.name = name;
         this.location = location;
@@ -59,6 +68,7 @@ public class Event {
         this.genre = genre;
         this.info = info;
         this.contact = contact;
+        this.distance = distance;
     }
 
     public String getPhoto() {
