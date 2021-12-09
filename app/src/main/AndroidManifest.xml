@@ -11,9 +11,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MusicIn"
-        >
         android:theme="@style/Theme.MusicIn">
+        <activity
+            android:name=".AddFormedBandActivity"
+            android:exported="true" />
         <activity
             android:name=".RequestEventActivity"
             android:exported="true" />

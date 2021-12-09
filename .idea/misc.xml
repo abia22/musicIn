@@ -9,13 +9,17 @@
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/drawable/gradient_grey.xml" value="2.165625" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3828125" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/drawable/input_bg.xml" value="0.634765625" />
+        <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/drawable/white_border.xml" value="0.287109375" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout-w1240dp/event_row.xml" value="0.23560910307898258" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout-w936dp/fragment_search_events.xml" value="0.275" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/activity_add_form_band_request.xml" value="0.2" />
+        <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/activity_add_formed_band.xml" value="0.275" />
+        <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/activity_email_pwd_sign_up.xml" value="0.275" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/activity_enterprise_sign_in.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/activity_login.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/activity_musician_hub.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/activity_musician_hub.xml" value="0.25" />
+        <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/activity_musician_profile.xml" value="0.275" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/activity_musician_sgin_in.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/activity_musician_sign_in.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/PC/StudioProjects/MusicIn/app/src/main/res/layout/activity_profile_settings.xml" value="0.25" />

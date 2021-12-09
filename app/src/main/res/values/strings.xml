@@ -62,5 +62,11 @@
     <string name="how_long_have_i_played_my_instrument">How long have I played my instrument?</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="band_name_dots">Band Name:</string>
+    <string name="insert_name">Insert Name</string>
+    <string name="add_formed_band">Add formed band</string>
+    <string name="add_to_my_bands">Add to my bands</string>
+    <string name="insert_member">Insert Member</string>
+    <string name="enter_member_here">Enter member here</string>
 
 </resources>

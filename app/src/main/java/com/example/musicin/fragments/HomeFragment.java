@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.musicin.AddFormedBandActivity;
 import com.example.musicin.MusicianProfileActivity;
 import com.example.musicin.adapters.BandMembersAdapter;
 import com.example.musicin.R;
@@ -90,6 +92,14 @@ public class HomeFragment extends Fragment {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
                 adapterView.setSelection(0);
+            }
+        });
+
+        TextView add_band_btn = view.findViewById(R.id.add_formed_band_btn);
+        add_band_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), AddFormedBandActivity.class));
             }
         });
 

@@ -110,29 +110,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/school_background_ed_txt" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/edit_photo"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/photo_layout"
         android:layout_marginTop="32dp"
-        android:src="@drawable/person"
-        app:civ_border_color="@color/black"
-        app:civ_border_width="2dp"
         app:layout_constraintEnd_toEndOf="@+id/spotify_ed_txt"
         app:layout_constraintStart_toStartOf="@+id/spotify_ed_txt"
-        app:layout_constraintTop_toBottomOf="@+id/spotify_ed_txt" />
+        app:layout_constraintTop_toBottomOf="@+id/spotify_ed_txt">
 
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="105dp"
-        android:layout_marginEnd="24dp"
-        android:src="@drawable/add_a_photo"
-        app:layout_constraintBottom_toTopOf="@+id/save_bttn"
-        app:layout_constraintEnd_toEndOf="@+id/edit_photo"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/edit_photo"
-        app:layout_constraintTop_toBottomOf="@+id/spotify_ed_txt" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/edit_photo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/person"
+            app:civ_border_color="@color/black"
+            app:civ_border_width="2dp" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/add_a_photo"
+            android:layout_alignEnd="@+id/edit_photo"
+            android:layout_alignBottom="@id/edit_photo"
+            />
+    </RelativeLayout>
+
+
+
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/save_bttn"
@@ -148,7 +154,7 @@
         app:layout_constraintEnd_toEndOf="@+id/spotify_ed_txt"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/spotify_ed_txt"
-        app:layout_constraintTop_toBottomOf="@+id/edit_photo" />
+        app:layout_constraintTop_toBottomOf="@+id/photo_layout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

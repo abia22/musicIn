@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MusicianHubActivity">
+    tools:context=".MusicianHubActivity"
+    android:background="@drawable/gradient_grey">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/toolbar"
@@ -40,7 +41,7 @@
     <fragment
         android:id="@+id/fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"

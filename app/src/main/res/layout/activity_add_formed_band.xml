@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddFormBandRequestActivity"
+    tools:context=".AddFormedBandActivity"
     android:background="@drawable/gradient_grey">
 
     <ScrollView
@@ -19,22 +19,55 @@
                 android:id="@+id/new_request_txt"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:text="@string/new_request_to_form_a_band"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="@string/add_formed_band"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="32sp"
-                android:textStyle="bold"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/layout_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/new_request_txt"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="45dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/name_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/band_name_dots"
+                    android:textColor="@color/white"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/input_bg">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/band_name_ed_txt"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:maxLines="1" />
+                </RelativeLayout>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/layout_genre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_name"
                 android:layout_centerHorizontal="true"
-                android:orientation="horizontal"
-                android:layout_below="@+id/new_request_txt"
-                android:layout_marginTop="32dp">
+                android:layout_marginTop="40dp"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/genre_txt"
@@ -49,8 +82,8 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/input_bg"
-                    android:layout_marginStart="5dp">
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/input_bg">
 
                     <AutoCompleteTextView
                         android:id="@+id/genre_actv"
@@ -65,68 +98,17 @@
 
 
             <TextView
-                android:id="@+id/instruments_txt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/layout_genre"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="32dp"
-                android:text="@string/instruments_needed"
-                android:textColor="@color/white"
-                android:textSize="25sp"
-                android:textStyle="bold" />
-
-            <RelativeLayout
-                android:id="@+id/instruments_header"
-                android:layout_width="wrap_content"
-                android:layout_height="100dp"
-                android:layout_below="@+id/instruments_txt"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="25dp"
-                android:background="@color/white"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp">
-
-                <EditText
-                    android:id="@+id/needed_instruments_ed_txt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:ems="10"
-                    android:hint="@string/enter_instrument_here"
-                    android:maxLines="1"/>
-
-                <ImageView
-                    android:id="@+id/add_item"
-                    android:layout_width="40sp"
-                    android:layout_height="40sp"
-                    android:layout_centerVertical="true"
-                    android:layout_toEndOf="@+id/needed_instruments_ed_txt"
-                    android:src="@drawable/list_add" />
-
-            </RelativeLayout>
-
-            <com.example.musicin.utils.NonScrollListView
-                android:id="@+id/instruments_lv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/instruments_header"
-                android:layout_alignStart="@+id/instruments_header"
-                android:layout_alignEnd="@+id/instruments_header"
-                android:background="@color/white" />
-
-            <TextView
                 android:id="@+id/add_members_txt"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/instruments_lv"
+                android:layout_below="@id/layout_genre"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="32dp"
-                android:text="@string/already_have_members"
+                android:layout_marginTop="40dp"
+                android:text="Your Band Members:"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="25sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
 
             <RelativeLayout
@@ -146,7 +128,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:ems="10"
-                    android:hint="@string/enter_member_here"
+                    android:hint="@string/insert_member"
                     android:inputType="textAutoCorrect"
                     android:maxLines="1" />
 
@@ -170,20 +152,19 @@
                 android:background="@color/white" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/submit_new_band_request"
+                android:id="@+id/add_band_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/members_lv"
                 android:layout_alignStart="@+id/members_header"
                 android:layout_alignEnd="@id/members_header"
                 android:layout_marginTop="35dp"
-                android:text="@string/submit"
+                android:text="@string/add_to_my_bands"
                 android:textSize="20sp" />
 
         </RelativeLayout>
 
 
     </ScrollView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
