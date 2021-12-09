@@ -37,8 +37,6 @@ public class BandRequestDialog extends DialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.band_request_dialog,null);
 
-
-
         Data data = Data.getInstance();
         Bundle bundle = getArguments();
         String email = bundle.getString("email");
@@ -59,7 +57,6 @@ public class BandRequestDialog extends DialogFragment {
             }
         }
 
-
         RadioGroup radio = view.findViewById(R.id.instrument_radio_group);
 
         for (String instrument: instrumentsPossible) {
@@ -68,9 +65,6 @@ public class BandRequestDialog extends DialogFragment {
             radio.addView(radioButton);
         }
 
-
-
-
         builder.setView(view)
                 .setTitle("Choose Instrument")
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -78,7 +72,12 @@ public class BandRequestDialog extends DialogFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         int radioId = radio.getCheckedRadioButtonId();
                         RadioButton radioButton = view.findViewById(radioId);
-                        String chosenInstrument = radioButton.getText().toString();
+                        String chosenInstrument = "";
+                        if(radioButton != null)
+                            chosenInstrument = radioButton.getText().toString();
+                        Bundle result = new Bundle();
+                        result.putString("bundleKey", chosenInstrument);
+                        getParentFragmentManager().setFragmentResult("requestKey", result);
                     }
                 });
         //instrument = view.findViewById(R.id.instrument_dialog);

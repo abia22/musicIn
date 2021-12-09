@@ -44,8 +44,10 @@ public class SelectBandDialog extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         int radioId = bands.getCheckedRadioButtonId();
+                        String chosenBand = "";
                         RadioButton radioButton = view.findViewById(radioId);
-                        String chosenBand = radioButton.getText().toString();
+                        if (radioButton != null)
+                            chosenBand = radioButton.getText().toString();
                         Bundle result = new Bundle();
                         result.putString("bundleKey", chosenBand);
                         getParentFragmentManager().setFragmentResult("requestKey", result);

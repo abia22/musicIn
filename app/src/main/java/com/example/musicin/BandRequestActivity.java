@@ -1,6 +1,8 @@
 package com.example.musicin;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,6 +28,7 @@ public class BandRequestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_band_request);
+
         MaterialButton request = findViewById(R.id.requestJoinBand_bttn);
         BandRequest br = getIntent().getParcelableExtra("Request");
         email = getIntent().getStringExtra("email");
@@ -38,6 +41,7 @@ public class BandRequestActivity extends AppCompatActivity {
         br.getInstruments().forEach(i -> instruments = instruments + " " + i);
         instrumentList.setText(instruments);
         bandGenre.setText(br.getGenre());
+
         RecyclerView membersRv = findViewById(R.id.members_rv);
         BandMembersAdapter adapter = new BandMembersAdapter(br.getMembers());
         membersRv.setAdapter(adapter);
@@ -63,5 +67,15 @@ public class BandRequestActivity extends AppCompatActivity {
         bundle.putString("email",email);
         dialog.setArguments(bundle);
         dialog.show(getSupportFragmentManager(),"dialog");
+        dialog.getParentFragmentManager().setFragmentResultListener("requestKey", BandRequestActivity.this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                String chosenInstrument = result.getString("bundleKey");
+                if(!chosenInstrument.equals("")){
+                    //TODO: ADD REQUEST TO MUSICIAN IN DATA
+                    finish();
+                }
+            }
+        });
     }
 }

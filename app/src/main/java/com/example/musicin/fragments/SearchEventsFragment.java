@@ -5,9 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.CompoundButton;
-import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.musicin.GenreDialog;
 import com.example.musicin.R;
-import com.example.musicin.RequestEventActivity;
+import com.example.musicin.EventRequestActivity;
 import com.example.musicin.adapters.SearchEventAdapter;
 import com.example.musicin.data.Data;
 import com.example.musicin.data.Event;
@@ -32,7 +30,6 @@ import com.google.android.material.switchmaterial.SwitchMaterial;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.TimeZone;
 
 public class SearchEventsFragment extends Fragment {
     private List<Event>events = new ArrayList<>();
@@ -71,7 +68,7 @@ public class SearchEventsFragment extends Fragment {
         searchEventAdapter.setOnItemClickListener(new SearchEventAdapter.OnItemClickListener() {
             @Override
             public void OnItemClick(int position) {
-                Intent intent = new Intent(getActivity(), RequestEventActivity.class);
+                Intent intent = new Intent(getActivity(), EventRequestActivity.class);
                 Event event = searchEventAdapter.getEvent(position);
                 intent.putExtra("event", event);
                 intent.putExtra("email", email);

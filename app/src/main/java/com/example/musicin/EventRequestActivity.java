@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class RequestEventActivity extends AppCompatActivity {
+public class EventRequestActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,12 +65,14 @@ public class RequestEventActivity extends AppCompatActivity {
                 bundle.putStringArrayList("bands", bandNames);
                 selectBandDialog.setArguments(bundle);
                 selectBandDialog.show(getSupportFragmentManager(), "Select a band Dialog");
-                selectBandDialog.getParentFragmentManager().setFragmentResultListener("requestKey", RequestEventActivity.this, new FragmentResultListener() {
+                selectBandDialog.getParentFragmentManager().setFragmentResultListener("requestKey", EventRequestActivity.this, new FragmentResultListener() {
                     @Override
                     public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                         String chosenBand = result.getString("bundleKey");
-                        //TODO: ADD REQUEST TO MUSICIAN IN DATA
-                        finish();
+                        if(!chosenBand.equals("")){
+                            //TODO: ADD REQUEST TO MUSICIAN IN DATA
+                            finish();
+                        }
                     }
                 });
             }
