@@ -1,7 +1,14 @@
 package com.example.musicin;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -17,6 +24,8 @@ import com.example.musicin.utils.NonScrollListView;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class AddFormBandRequestActivity extends AppCompatActivity {
 
     private static ArrayList<String> instrumentsList;
@@ -25,6 +34,26 @@ public class AddFormBandRequestActivity extends AppCompatActivity {
     private static NonScrollListView  members_lv;
     private static InstrumentsListViewAdapter instrumentsAdapter;
     private static MembersListViewAdapter membersAdapter;
+    CircleImageView circleImageView;
+
+    ActivityResultLauncher<String> mGetContent = registerForActivityResult(new ActivityResultContracts.GetContent(),
+            new ActivityResultCallback<Uri>() {
+                @Override
+                public void onActivityResult(Uri uri) {
+                    if(uri != null)
+                        circleImageView.setImageURI(uri);
+                }
+            });
+
+    private ActivityResultLauncher<String> requestPermissionLauncher =
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+                if (isGranted) {
+                    mGetContent.launch("image/*");
+                } else {
+                    Toast toast = Toast.makeText(getApplicationContext(), "Permission is necessary in order to change the profile picture", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+            });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +106,20 @@ public class AddFormBandRequestActivity extends AppCompatActivity {
                     members_edt.setText("");
                     membersList.add(text);
                     members_lv.setAdapter(membersAdapter);
+                }
+            }
+        });
+        circleImageView = findViewById(R.id.edit_photo);
+        circleImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ContextCompat.checkSelfPermission(
+                        getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) ==
+                        PackageManager.PERMISSION_GRANTED) {
+                    mGetContent.launch("image/*");
+                } else {
+                    requestPermissionLauncher.launch(
+                            Manifest.permission.READ_EXTERNAL_STORAGE);
                 }
             }
         });
