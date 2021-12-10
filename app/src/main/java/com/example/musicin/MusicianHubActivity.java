@@ -75,6 +75,7 @@ public class MusicianHubActivity extends AppCompatActivity {
                         editor.clear();
                         editor.apply();
                         intent = new Intent(MusicianHubActivity.this, MainActivity.class);
+                        intent.putExtra("email", email);
                         finishAffinity();
                         startActivity(intent);
                         break;

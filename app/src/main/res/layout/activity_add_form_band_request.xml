@@ -58,6 +58,7 @@
                         android:layout_height="wrap_content"
                         android:completionHint="@string/insert_genre"
                         android:completionThreshold="1"
+                        android:inputType="text"
                         android:maxLines="1" />
                 </RelativeLayout>
 
@@ -94,7 +95,8 @@
                     android:layout_centerVertical="true"
                     android:ems="10"
                     android:hint="@string/enter_instrument_here"
-                    android:maxLines="1"/>
+                    android:inputType="text"
+                    android:maxLines="1" />
 
                 <ImageView
                     android:id="@+id/add_item"

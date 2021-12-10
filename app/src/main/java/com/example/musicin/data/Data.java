@@ -176,5 +176,9 @@ public class Data {
         return bandRequestList;
     }
 
+    public void setMusicianProfile(String email, MusicianProfile musicianProfile) {
+        musicianProfileMap.put(email, musicianProfile);
+    }
+
 
 }

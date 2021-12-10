@@ -55,6 +55,7 @@
                         android:id="@+id/band_name_ed_txt"
                         android:layout_width="180dp"
                         android:layout_height="wrap_content"
+                        android:inputType="text"
                         android:maxLines="1" />
                 </RelativeLayout>
 
@@ -91,6 +92,7 @@
                         android:layout_height="wrap_content"
                         android:completionHint="@string/insert_genre"
                         android:completionThreshold="1"
+                        android:inputType="text"
                         android:maxLines="1" />
                 </RelativeLayout>
 
