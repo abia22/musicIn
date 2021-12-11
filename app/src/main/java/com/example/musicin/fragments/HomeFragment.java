@@ -61,9 +61,10 @@ public class HomeFragment extends Fragment {
         public void onActivityResult(ActivityResult result) {
             if(result != null && result.getResultCode() == RESULT_OK){
                 if (result.getData() != null){
-                    Band band = result.getData().getParcelableExtra("band");
+                    String bandName = result.getData().getStringExtra("bandName");
+                    ArrayList<BandMember> members = result.getData().getParcelableArrayListExtra("members");
+                    Band band = new Band(bandName, members);
                     user.addBand(band);
-                    bandList.add(band);
                     bandNames.add(band.getName());
                     bandsAdapter.notifyDataSetChanged();
                 }
@@ -110,9 +111,7 @@ public class HomeFragment extends Fragment {
                     membersAdapter = new BandMembersAdapter(bandList.get(i).getMembers());
                     members_rv.setAdapter(membersAdapter);
                     members_rv.setLayoutManager(new LinearLayoutManager(getContext()));
-                    members_rv.addItemDecoration(divider);
                 }
-
             }
 
             @Override
@@ -125,7 +124,6 @@ public class HomeFragment extends Fragment {
         add_band_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: ADD BAND TO BANDSADAPTER
                 startForResult.launch(new Intent(getActivity(), AddFormedBandActivity.class));
             }
         });

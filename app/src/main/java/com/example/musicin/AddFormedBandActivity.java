@@ -43,12 +43,15 @@ public class AddFormedBandActivity extends AppCompatActivity {
 
         TextInputEditText bandName_ed_txt = findViewById(R.id.band_name_ed_txt);
         AutoCompleteTextView genre_ed_txt = findViewById(R.id.genre_actv);
-        EditText add_members_ed_txt = findViewById(R.id.members_ed_txt);
+        AutoCompleteTextView add_members_ed_txt = findViewById(R.id.members_ed_txt);
         members_lv = findViewById(R.id.members_lv);
         ImageView add_member_btn = findViewById(R.id.add_member_img);
 
         ArrayAdapter<String> genresAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Data.genres);
         genre_ed_txt.setAdapter(genresAdapter);
+
+        ArrayAdapter<String> usersAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Data.appUsers);
+        add_members_ed_txt.setAdapter(usersAdapter);
 
         membersList = new ArrayList<>();
         membersAdapter = new FormedMembersListViewAdapter(getApplicationContext(), membersList);
@@ -74,18 +77,22 @@ public class AddFormedBandActivity extends AppCompatActivity {
         add_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                List<BandMember> bandMembers = new ArrayList<>();
-                for (String name : membersList) {
-                    BandMember member = data.getBandMember(name);
-                    if (member != null)
-                        bandMembers.add(member);
-                }
+                if(bandName_ed_txt.getText().length() == 0 || genre_ed_txt.getText().length() == 0 || membersList.isEmpty()){
+                    Toast.makeText(getApplicationContext(), "All paramters must be filled", Toast.LENGTH_SHORT).show();
+                } else {
+                    ArrayList<BandMember> bandMembers = new ArrayList<>();
+                    for (String name : membersList) {
+                        BandMember member = data.getBandMember(name);
+                        if (member != null)
+                            bandMembers.add(member);
+                    }
 
-                Band band = new Band(bandName_ed_txt.getText().toString(), bandMembers);
-                Intent intent = new Intent();
-                intent.putExtra("band", band);
-                setResult(RESULT_OK, intent);
-                finish();
+                    Intent intent = new Intent();
+                    intent.putExtra("bandName", bandName_ed_txt.getText().toString());
+                    intent.putExtra("members", bandMembers);
+                    setResult(RESULT_OK, intent);
+                    finish();
+                }
             }
         });
 

@@ -1,11 +1,17 @@
 package com.example.musicin.fragments;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -20,6 +26,8 @@ import com.example.musicin.InstrumentDialog;
 import com.example.musicin.R;
 import com.example.musicin.adapters.SearchEventAdapter;
 import com.example.musicin.adapters.SearchMemberAdapter;
+import com.example.musicin.data.Band;
+import com.example.musicin.data.BandMember;
 import com.example.musicin.data.BandRequest;
 import com.example.musicin.data.Data;
 import com.example.musicin.data.Event;
@@ -27,6 +35,7 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SearchMembersFragment extends Fragment {
@@ -36,6 +45,18 @@ public class SearchMembersFragment extends Fragment {
     String genreFilter;
     MaterialButton genres;
     MaterialButton instruments;
+    List<BandRequest> requests;
+
+    ActivityResultLauncher<Intent> startForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+        @Override
+        public void onActivityResult(ActivityResult result) {
+            if(result != null && result.getResultCode() == RESULT_OK){
+                if (result.getData() != null){
+                    //TODO: GET REQUEST BACK FROM ADDFORMREQUESTACTIVITY AND ADD TO REQUESTS LIST
+                }
+            }
+        }
+    });
 
     @Nullable
     @Override
@@ -52,7 +73,7 @@ public class SearchMembersFragment extends Fragment {
         String email = getArguments().getString("email");
         RecyclerView members_rv = view.findViewById(R.id.data_list_members);
         members_rv.setHasFixedSize(false);
-        List<BandRequest> requests = data.getAllRequests();
+        requests = data.getAllRequests();
         memberAdapter = new SearchMemberAdapter(view.getContext(),requests);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(view.getContext(),2,GridLayoutManager.VERTICAL,false);
         members_rv.setLayoutManager(gridLayoutManager);
@@ -62,7 +83,8 @@ public class SearchMembersFragment extends Fragment {
         add_request_bttn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), AddFormBandRequestActivity.class));
+
+                startForResult.launch(new Intent(getActivity(), AddFormBandRequestActivity.class));
             }
         });
 

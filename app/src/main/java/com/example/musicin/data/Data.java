@@ -24,6 +24,8 @@ public class Data {
 
     public static final String[] instruments = new String[] {"Singer","Accordion","Banjo","Bass guitar","Bongo","Cello","Clarinet","Cymbal","Drums","Euphonium","Flute","Harmonica","Gong","Guitar","Harmonica","Harp","Hammered dulcimer","Lute","Lyre","Mandolin","Marimba","Piano","Piccolo","Saxophone","Tambourine","Trumpet","Tuba","Ukulele","Viola","Violin","Xylophone"};
 
+    public static final String[] appUsers = new String[] {"Kara Woolley", "Dollie Moody", "Braiden Cherry", "Bradley Tucker", "Ray Scott"};
+
     public static Data getInstance(){ return  instance;}
 
     private  static Data instance = new Data();
@@ -60,8 +62,9 @@ public class Data {
         Band band = new Band("King Red", memberList);
         musician1.addBand(band);
 
-        BandMember member4 = new BandMember("Ray Tucker", "Piano", "https://image.freepik.com/free-photo/elegant-dressed-musician-playing-keyboards-front-view_23-2148673548.jpg");
+        BandMember member4 = new BandMember("Ray Scott", "Piano", "https://image.freepik.com/free-photo/elegant-dressed-musician-playing-keyboards-front-view_23-2148673548.jpg");
         bandMemberMap.put(member4.getName(), member4);
+        //TODO: MAKE MUSCIAN AND MUSICIANPROFILE OBJECT FOR RAY SCOTT AND ADD IT TO MUSICIANMAP AND MUSICIANPROFILEMAP
 
         musicianMap.put("musician@mail.com", musician1);
         musicianMap.put("musician2@mail.com", musician2);

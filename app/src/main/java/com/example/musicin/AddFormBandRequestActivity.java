@@ -21,6 +21,8 @@ import com.example.musicin.adapters.InstrumentsListViewAdapter;
 import com.example.musicin.adapters.MembersListViewAdapter;
 import com.example.musicin.data.Data;
 import com.example.musicin.utils.NonScrollListView;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
 
@@ -60,6 +62,8 @@ public class AddFormBandRequestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_form_band_request);
 
+        TextInputEditText name_ed_txt = findViewById(R.id.band_input_txt);
+
         AutoCompleteTextView genres_edtxt = findViewById(R.id.genre_actv);
         ArrayAdapter<String> genresAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Data.genres);
         genres_edtxt.setAdapter(genresAdapter);
@@ -87,7 +91,9 @@ public class AddFormBandRequestActivity extends AppCompatActivity {
             }
         });
 
-        EditText members_edt = findViewById(R.id.members_ed_txt);
+        AutoCompleteTextView members_edt = findViewById(R.id.members_ed_txt);
+        ArrayAdapter<String> usersAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Data.appUsers);
+        members_edt.setAdapter(usersAdapter);
         members_lv = findViewById(R.id.members_lv);
         ImageView addmember_bttn = findViewById(R.id.add_member_img);
         membersList = new ArrayList<>();
@@ -121,6 +127,14 @@ public class AddFormBandRequestActivity extends AppCompatActivity {
                     requestPermissionLauncher.launch(
                             Manifest.permission.READ_EXTERNAL_STORAGE);
                 }
+            }
+        });
+
+        MaterialButton submit_btn = findViewById(R.id.submit_new_band_request);
+        submit_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //TODO: RETURN A BANDREQUEST OBJECT BACK TO SEARCHMEMBERSFRAGMENT
             }
         });
     }
