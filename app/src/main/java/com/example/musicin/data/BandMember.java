@@ -7,17 +7,27 @@ public class BandMember implements Parcelable {
     private String name;
     private String instrument;
     private String photo;
-
-    public BandMember(String name, String instrument, String photo) {
+    private String email;
+    public BandMember(String name, String instrument, String photo,String email) {
         this.name = name;
         this.instrument = instrument;
         this.photo = photo;
+        this.email = email;
     }
 
     protected BandMember(Parcel in) {
         name = in.readString();
         instrument = in.readString();
         photo = in.readString();
+        email = in.readString();
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public static final Creator<BandMember> CREATOR = new Creator<BandMember>() {
@@ -66,5 +76,6 @@ public class BandMember implements Parcelable {
         parcel.writeString(name);
         parcel.writeString(instrument);
         parcel.writeString(photo);
+        parcel.writeString(email);
     }
 }

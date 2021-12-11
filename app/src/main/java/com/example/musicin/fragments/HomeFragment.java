@@ -25,6 +25,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.musicin.AddFormedBandActivity;
+import com.example.musicin.EventRequestActivity;
 import com.example.musicin.MusicianProfileActivity;
 import com.example.musicin.adapters.BandMembersAdapter;
 import com.example.musicin.R;
@@ -111,6 +112,16 @@ public class HomeFragment extends Fragment {
                     membersAdapter = new BandMembersAdapter(bandList.get(i).getMembers());
                     members_rv.setAdapter(membersAdapter);
                     members_rv.setLayoutManager(new LinearLayoutManager(getContext()));
+                    members_rv.addItemDecoration(divider);
+                    membersAdapter.setOnItemClickListener(new BandMembersAdapter.OnItemClickListener() {
+                        @Override
+                        public void OnItemClick(int position) {
+                            Intent intent = new Intent(getActivity(),MusicianProfileActivity.class);
+                            intent.putExtra("request",false);
+                            intent.putExtra("email",bandList.get(i).getMembers().get(position).getEmail());
+                            startActivity(intent);
+                        }
+                    });
                 }
             }
 
@@ -119,6 +130,8 @@ public class HomeFragment extends Fragment {
                 adapterView.setSelection(0);
             }
         });
+
+
 
         TextView add_band_btn = view.findViewById(R.id.add_formed_band_btn);
         add_band_btn.setOnClickListener(new View.OnClickListener() {
@@ -134,6 +147,15 @@ public class HomeFragment extends Fragment {
         events_rv.setAdapter(homepageEventsAdapter);
         events_rv.setLayoutManager(new LinearLayoutManager(getContext()));
         events_rv.addItemDecoration(divider);
+        homepageEventsAdapter.setOnItemClickListener(new HomepageEventsAdapter.OnItemClickListener() {
+            @Override
+            public void OnItemClick(int position) {
+                Intent intent = new Intent(getActivity(), EventRequestActivity.class);
+                intent.putExtra("request",false);
+                intent.putExtra("event",homepageEventsAdapter.getEvent(position));
+                startActivity(intent);
+            }
+        });
 
         RecyclerView notifications_rv = view.findViewById(R.id.notification_rv);
         notificationsList = data.getMusicianRequests(user.getEmail());
@@ -151,6 +173,7 @@ public class HomeFragment extends Fragment {
                     intent.putExtra("email", ((Request) notification).getEmail());
                     intent.putExtra("position", position);
                     intent.putExtra("band", ((Request) notification).getBandToJoin());
+                    intent.putExtra("request",true);
                     startActivity(intent);
                 }
             }
@@ -181,7 +204,7 @@ public class HomeFragment extends Fragment {
             ArrayList<Band> userBands = user.getBands();
             Musician musicianRequester = data.getMusician(event.emailNewMember);
             MusicianProfile musicianProfileRequester = data.getMusicianProfile(event.emailNewMember);
-            BandMember newMember = new BandMember(musicianRequester.getName(), musicianRequester.getInstruments(), musicianProfileRequester.getPhoto());
+            BandMember newMember = new BandMember(musicianRequester.getName(), musicianRequester.getInstruments(), musicianProfileRequester.getPhoto(), musicianRequester.getEmail());
             for (int i = 0; i < userBands.size(); i++) {
                 Band band = userBands.get(i);
                 if(band.getName().equals(event.bandToJoin)){

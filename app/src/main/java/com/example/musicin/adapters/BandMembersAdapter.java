@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.musicin.R;
+import com.example.musicin.adapters.SearchEventAdapter;
 import com.example.musicin.data.BandMember;
 import com.squareup.picasso.Picasso;
 
@@ -20,6 +21,15 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class BandMembersAdapter extends RecyclerView.Adapter<BandMembersAdapter.ViewHolder> {
     private List<BandMember> memberList;
 
+    OnItemClickListener listener;
+
+    public interface OnItemClickListener{
+        void OnItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
     public BandMembersAdapter(List<BandMember> memberList){
         this.memberList = memberList;
     }
@@ -65,6 +75,18 @@ public class BandMembersAdapter extends RecyclerView.Adapter<BandMembersAdapter.
             photo = itemView.findViewById(R.id.member_photo);
             name = itemView.findViewById(R.id.member_name_txt);
             instrument = itemView.findViewById(R.id.instrument_txt);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (listener != null) {
+                        int position = getAbsoluteAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION){
+                            listener.OnItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 }

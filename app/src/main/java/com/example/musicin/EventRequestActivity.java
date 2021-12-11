@@ -32,6 +32,7 @@ public class EventRequestActivity extends AppCompatActivity {
 
         Event event = getIntent().getParcelableExtra("event");
         String email = getIntent().getStringExtra("email");
+        boolean isRequest = getIntent().getBooleanExtra("request",true);
         Musician musician = data.getMusician(email);
 
         TextView name_tv = findViewById(R.id.event_name_request_txt);
@@ -40,6 +41,10 @@ public class EventRequestActivity extends AppCompatActivity {
         TextView info_tv = findViewById(R.id.event_info_request_txt);
         TextView contact_tv = findViewById(R.id.event_contact_request_txt);
         MaterialButton sendRequest_btn = findViewById(R.id.request_join_event_btn);
+        if(!isRequest){
+            sendRequest_btn.setVisibility(View.GONE);
+        }
+
 
         name_tv.setText(event.getName());
         Picasso.get().load(event.getPhoto()).into(photo_iv);

@@ -42,6 +42,7 @@ public class MusicianProfileActivity extends AppCompatActivity {
         String email = intent.getStringExtra("email");
         int position = intent.getIntExtra("position", -1);
         String bandToJoin = intent.getStringExtra("band");
+        boolean isRequest = intent.getBooleanExtra("request",true);
         Musician musician = data.getMusician(email);
         MusicianProfile musicianProfile = data.getMusicianProfile(email);
 
@@ -55,6 +56,11 @@ public class MusicianProfileActivity extends AppCompatActivity {
         MaterialButton socialMedia_btn = findViewById(R.id.social_media_btn);
         MaterialButton accept_btn = findViewById(R.id.accept_btn);
         MaterialButton decline_btn = findViewById(R.id.decline_btn);
+        if(!isRequest){
+            accept_btn.setVisibility(View.GONE);
+            decline_btn.setVisibility(View.GONE);
+        }
+
 
         name.setText(musician.getName());
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -72,7 +78,7 @@ public class MusicianProfileActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         instrument.setText(musician.getInstruments());
-        years_of_playing.setText("I have played my instrument for " + musicianProfile.getYearsOfPlaying() + " years");
+        years_of_playing.setText("I have been playing for " + musicianProfile.getYearsOfPlaying() + " years");
         places_played.setText("I have played at " + musicianProfile.getPlacesPlayedIn());
         school_background.setText("I have studied at " + musicianProfile.getMusicSchoolBackground());
         Picasso.get().load(musicianProfile.getPhoto()).into(photo);

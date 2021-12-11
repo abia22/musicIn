@@ -18,9 +18,18 @@ import java.util.List;
 
 public class HomepageEventsAdapter extends RecyclerView.Adapter<HomepageEventsAdapter.ViewHolder> {
     private List<Event> eventList;
+    OnItemClickListener listener;
 
     public HomepageEventsAdapter(List<Event> eventList){
         this.eventList = eventList;
+    }
+
+    public interface OnItemClickListener{
+        void OnItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -69,6 +78,22 @@ public class HomepageEventsAdapter extends RecyclerView.Adapter<HomepageEventsAd
             name = itemView.findViewById(R.id.event_name_txt);
             location = itemView.findViewById(R.id.event_location_txt);
             date = itemView.findViewById(R.id.event_date_txt);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (listener != null) {
+                        int position = getAbsoluteAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION){
+                            listener.OnItemClick(position);
+                        }
+                    }
+                }
+            });
         }
+    }
+
+    public Event getEvent(int position){
+       return  eventList.get(position);
     }
 }
