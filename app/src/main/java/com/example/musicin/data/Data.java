@@ -15,6 +15,7 @@ public class Data {
     Map<String, List<Event>> musicianEventsMap;
     Map<String, List<Notification>> musicianNotificationsMap;
     Map<String, MusicianProfile> musicianProfileMap;
+    Map<String, BandMember> bandMemberMap;
     List<Event> eventsList;
     List<BandRequest> bandRequestList;
     Musician musician1, musician2;
@@ -32,6 +33,7 @@ public class Data {
         this.musicianEventsMap = new HashMap<>();
         this.musicianNotificationsMap = new HashMap<>();
         this.musicianProfileMap = new HashMap<>();
+        this.bandMemberMap = new HashMap<>();
         this.eventsList = new ArrayList<>();
         this.bandRequestList = new ArrayList<>();
 
@@ -48,6 +50,9 @@ public class Data {
         BandMember member2 = new BandMember("Braiden Cherry", "Drums", "https://image.freepik.com/free-photo/drummer-playing-drum-set_107420-96124.jpg");
         BandMember member3 = new BandMember("Bradley Tucker", "Singer", "https://media.istockphoto.com/photos/man-singing-on-microphone-picture-id852214814?k=20&m=852214814&s=612x612&w=0&h=pZuG6MvdNla_NEE8iV5lQMUFLnhErh1rK7TnjYzDBbA=");
         ArrayList<BandMember> memberList = new ArrayList<>();
+        bandMemberMap.put(member1.getName(), member1);
+        bandMemberMap.put(member2.getName(), member2);
+        bandMemberMap.put(member3.getName(), member3);
         memberList.add(member1);
         memberList.add(member2);
         memberList.add(member3);
@@ -55,8 +60,8 @@ public class Data {
         Band band = new Band("King Red", memberList);
         musician1.addBand(band);
 
-
-
+        BandMember member4 = new BandMember("Ray Tucker", "Piano", "https://image.freepik.com/free-photo/elegant-dressed-musician-playing-keyboards-front-view_23-2148673548.jpg");
+        bandMemberMap.put(member4.getName(), member4);
 
         musicianMap.put("musician@mail.com", musician1);
         musicianMap.put("musician2@mail.com", musician2);
@@ -167,7 +172,7 @@ public class Data {
         bandRequestInstruments.add("Drums");
         bandRequestInstruments.add("Singer");
         List<BandMember> bandMembers = new ArrayList<>();
-        BandMember member1 = new BandMember("Bob","Guitar","https://image.freepik.com/free-photo/guitarist-plays-electric-guitar-with-bright-emotions-grey-background_186202-4755.jpg");
+        BandMember member1 = new BandMember("Bob Stuart","Guitar","https://image.freepik.com/free-photo/guitarist-plays-electric-guitar-with-bright-emotions-grey-background_186202-4755.jpg");
         bandMembers.add(member1);
         BandRequest bandRequest1 = new BandRequest(bandRequestInstruments, "Rock",bandMembers, "Fire", "https://image.freepik.com/fotos-gratis/inspiracao-banda-de-musicos-tocando-juntos-no-local-de-trabalho-de-arte-com-instrumentos_155003-16972.jpg");
 
@@ -178,6 +183,10 @@ public class Data {
 
     public void setMusicianProfile(String email, MusicianProfile musicianProfile) {
         musicianProfileMap.put(email, musicianProfile);
+    }
+
+    public BandMember getBandMember(String name) {
+        return bandMemberMap.get(name);
     }
 
 

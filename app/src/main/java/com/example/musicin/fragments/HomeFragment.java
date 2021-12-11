@@ -1,5 +1,7 @@
 package com.example.musicin.fragments;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,9 +12,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,8 +50,26 @@ public class HomeFragment extends Fragment {
     List<Notification> notificationsList;
     NotificationAdapter notificationAdapter;
     BandMembersAdapter membersAdapter;
+    ArrayAdapter<String> bandsAdapter;
+    List<Band> bandList;
+    List<String> bandNames;
     Musician user;
     Data data;
+
+    ActivityResultLauncher<Intent> startForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+        @Override
+        public void onActivityResult(ActivityResult result) {
+            if(result != null && result.getResultCode() == RESULT_OK){
+                if (result.getData() != null){
+                    Band band = result.getData().getParcelableExtra("band");
+                    user.addBand(band);
+                    bandList.add(band);
+                    bandNames.add(band.getName());
+                    bandsAdapter.notifyDataSetChanged();
+                }
+            }
+        }
+    });
 
     @Nullable
     @Override
@@ -61,8 +86,9 @@ public class HomeFragment extends Fragment {
 
         RecyclerView members_rv = view.findViewById(R.id.members_rv);
         Spinner bands_sp = view.findViewById(R.id.my_bands_spinner);
-        List<Band> bandList = user.getBands();
-        List<String> bandNames = new ArrayList<>(bandList.size());
+        bandList = new ArrayList<>();
+        bandList = user.getBands();
+        bandNames = new ArrayList<>(bandList.size());
         if (bandList.isEmpty())
             bandNames.add("No Bands Formed Yet");
         else{
@@ -73,7 +99,7 @@ public class HomeFragment extends Fragment {
 
         DividerItemDecoration divider = new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL);
 
-        ArrayAdapter<String> bandsAdapter = new ArrayAdapter<String>(getContext(), R.layout.spinner_item, bandNames);
+        bandsAdapter = new ArrayAdapter<String>(getContext(), R.layout.spinner_item, bandNames);
         bandsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         bands_sp.setAdapter(bandsAdapter);
 
@@ -99,7 +125,8 @@ public class HomeFragment extends Fragment {
         add_band_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), AddFormedBandActivity.class));
+                //TODO: ADD BAND TO BANDSADAPTER
+                startForResult.launch(new Intent(getActivity(), AddFormedBandActivity.class));
             }
         });
 
