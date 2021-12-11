@@ -78,7 +78,7 @@ public class AddFormedBandActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(bandName_ed_txt.getText().length() == 0 || genre_ed_txt.getText().length() == 0 || membersList.isEmpty()){
-                    Toast.makeText(getApplicationContext(), "All paramters must be filled", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "All parameters must be filled", Toast.LENGTH_SHORT).show();
                 } else {
                     ArrayList<BandMember> bandMembers = new ArrayList<>();
                     for (String name : membersList) {

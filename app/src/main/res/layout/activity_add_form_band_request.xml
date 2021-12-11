@@ -122,7 +122,7 @@
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp">
 
-                <EditText
+                <AutoCompleteTextView
                     android:id="@+id/needed_instruments_ed_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -207,6 +207,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
+                    android:completionHint="@string/insert_member"
+                    android:completionThreshold="1"
                     android:ems="10"
                     android:hint="@string/enter_member_here"
                     android:inputType="textAutoCorrect"

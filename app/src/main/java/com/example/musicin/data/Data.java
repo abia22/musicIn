@@ -64,7 +64,6 @@ public class Data {
 
         BandMember member4 = new BandMember("Ray Scott", "Piano", "https://image.freepik.com/free-photo/elegant-dressed-musician-playing-keyboards-front-view_23-2148673548.jpg");
         bandMemberMap.put(member4.getName(), member4);
-        //TODO: MAKE MUSCIAN AND MUSICIANPROFILE OBJECT FOR RAY SCOTT AND ADD IT TO MUSICIANMAP AND MUSICIANPROFILEMAP
 
         musicianMap.put("musician@mail.com", musician1);
         musicianMap.put("musician2@mail.com", musician2);

@@ -52,7 +52,13 @@ public class SearchMembersFragment extends Fragment {
         public void onActivityResult(ActivityResult result) {
             if(result != null && result.getResultCode() == RESULT_OK){
                 if (result.getData() != null){
-                    //TODO: GET REQUEST BACK FROM ADDFORMREQUESTACTIVITY AND ADD TO REQUESTS LIST
+                    BandRequest bandRequest = result.getData().getParcelableExtra("bandRequest");
+                    List<String> instrumentList = result.getData().getStringArrayListExtra("instruments");
+                    List<BandMember> membersList = result.getData().getParcelableArrayListExtra("members");
+                    bandRequest.setInstruments(instrumentList);
+                    bandRequest.setMembers(membersList);
+                    requests.add(bandRequest);
+                    memberAdapter.notifyDataSetChanged();
                 }
             }
         }
