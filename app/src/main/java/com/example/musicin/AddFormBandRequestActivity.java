@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,12 +20,15 @@ import android.widget.Toast;
 
 import com.example.musicin.adapters.InstrumentsListViewAdapter;
 import com.example.musicin.adapters.MembersListViewAdapter;
+import com.example.musicin.data.BandMember;
+import com.example.musicin.data.BandRequest;
 import com.example.musicin.data.Data;
 import com.example.musicin.utils.NonScrollListView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -37,13 +41,17 @@ public class AddFormBandRequestActivity extends AppCompatActivity {
     private static InstrumentsListViewAdapter instrumentsAdapter;
     private static MembersListViewAdapter membersAdapter;
     CircleImageView circleImageView;
+    Uri photoUri;
 
     ActivityResultLauncher<String> mGetContent = registerForActivityResult(new ActivityResultContracts.GetContent(),
             new ActivityResultCallback<Uri>() {
                 @Override
                 public void onActivityResult(Uri uri) {
-                    if(uri != null)
+                    if(uri != null){
                         circleImageView.setImageURI(uri);
+                        photoUri = uri;
+                    }
+
                 }
             });
 
@@ -62,13 +70,17 @@ public class AddFormBandRequestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_form_band_request);
 
+        Data data = Data.getInstance();
+
         TextInputEditText name_ed_txt = findViewById(R.id.band_input_txt);
 
         AutoCompleteTextView genres_edtxt = findViewById(R.id.genre_actv);
         ArrayAdapter<String> genresAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Data.genres);
         genres_edtxt.setAdapter(genresAdapter);
 
-        EditText instruments_edt = findViewById(R.id.needed_instruments_ed_txt);
+        AutoCompleteTextView instruments_edt = findViewById(R.id.needed_instruments_ed_txt);
+        ArrayAdapter<String> instrumentsAutoAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Data.instruments);
+        instruments_edt.setAdapter(instrumentsAutoAdapter);
         instruments_lv = findViewById(R.id.instruments_lv);
         ImageView addItem_bttn = findViewById(R.id.add_item);
         instrumentsList = new ArrayList<>();
@@ -134,7 +146,28 @@ public class AddFormBandRequestActivity extends AppCompatActivity {
         submit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: RETURN A BANDREQUEST OBJECT BACK TO SEARCHMEMBERSFRAGMENT
+                String bandName = name_ed_txt.getText().toString();
+                String genre = genres_edtxt.getText().toString();
+                if(bandName.equals("") || genre.equals("") || instrumentsList.isEmpty() || photoUri == null){
+                    Toast.makeText(getApplicationContext(), "Only the members list is an optional parameter", Toast.LENGTH_SHORT).show();
+                } else {
+                    ArrayList<BandMember> bandMembers = new ArrayList<>();
+                    for (String name : membersList) {
+                        BandMember member = data.getBandMember(name);
+                        if (member != null)
+                            bandMembers.add(member);
+                    }
+                    Intent intent = new Intent();
+                    List<String> newInstrumentsList = new ArrayList<>();
+                    newInstrumentsList.addAll(newInstrumentsList);
+                    BandRequest bandRequest = new BandRequest(null, genre, null, bandName, photoUri.toString());
+                    intent.putExtra("bandRequest", bandRequest);
+                    intent.putExtra("instruments", instrumentsList);
+                    intent.putExtra("members", bandMembers);
+                    setResult(RESULT_OK, intent);
+                    finish();
+
+                }
             }
         });
     }
