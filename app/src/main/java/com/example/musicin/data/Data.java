@@ -54,9 +54,8 @@ public class Data {
         MusicianProfile musicianProfile3 = new MusicianProfile(2,"various gigs","Rock school","https://www.spotify.com","https://image.freepik.com/free-photo/cheerful-ginger-teenage-girl-stretches-arm-making-selfie-smiles-gladfully-with-teeth-glad-buy-new-white-electric-guitar-wears-casual-clothes-going-practice-playing-musical-instrument_273609-50910.jpg");
         MusicianProfile musicianProfile4 = new MusicianProfile(4,"concerts around the world","jazz music school","https://www.tidal.com","https://image.freepik.com/free-photo/drummer-playing-drum-set_107420-96124.jpg");
         MusicianProfile musicianProfile5 = new MusicianProfile(5,"with a church choir","church choir and private lessons ","https://www.facebook.com","https://media.istockphoto.com/photos/man-singing-on-microphone-picture-id852214814?k=20&m=852214814&s=612x612&w=0&h=pZuG6MvdNla_NEE8iV5lQMUFLnhErh1rK7TnjYzDBbA=");
-        MusicianProfile musicianProfile6 = new MusicianProfile(10,"at weddings and formal restaurants","arts college","https://www.myspace.com","https://image.freepik.com/free-photo/elegant-dressed-musician-playing-keyboards-front-view_23-2148673548.jpg");
-        MusicianProfile musicianProfile7 = new MusicianProfile(8,"at cruises","arts college","https://www.myspace.com","https://image.freepik.com/free-photo/guitarist-plays-electric-guitar-with-bright-emotions-grey-background_186202-4755.jpg");
-
+        MusicianProfile musicianProfile6 = new MusicianProfile(10,"weddings and formal restaurants","arts college","https://www.myspace.com","https://image.freepik.com/free-photo/elegant-dressed-musician-playing-keyboards-front-view_23-2148673548.jpg");
+        MusicianProfile musicianProfile7 = new MusicianProfile(8,"cruises","arts college","https://www.myspace.com","https://image.freepik.com/free-photo/guitarist-plays-electric-guitar-with-bright-emotions-grey-background_186202-4755.jpg");
         musicianProfileMap.put("musician2@mail.com", musicianProfile2);
         musicianProfileMap.put(musician3.getEmail(),musicianProfile3);
         musicianProfileMap.put(musician4.getEmail(),musicianProfile4);
@@ -191,21 +190,28 @@ public class Data {
 
     public List<BandRequest> getAllRequests() {
         bandRequestList.clear();
-        List<String> bandRequestInstruments = new ArrayList<>();
-        bandRequestInstruments.add("Guitar");
-        bandRequestInstruments.add("Drums");
-        bandRequestInstruments.add("Singer");
+        List<String> bandRequestInstruments1 = new ArrayList<>();
+        bandRequestInstruments1.add("Guitar");
+        bandRequestInstruments1.add("Drums");
+        bandRequestInstruments1.add("Singer");
+        List<String> bandRequestInstruments2 = new ArrayList<>();
+        bandRequestInstruments2.add("Bass guitar");
+        bandRequestInstruments2.add("Tuba");
         List<BandMember> bandMembers = new ArrayList<>();
         BandMember member1 = new BandMember("Bob Stuart","Guitar","https://image.freepik.com/free-photo/guitarist-plays-electric-guitar-with-bright-emotions-grey-background_186202-4755.jpg","bob@mail.com");
         bandMembers.add(member1);
         BandMember member2 = new BandMember(musician4.getName(),musician4.getInstruments(),musicianProfileMap.get(musician4.getEmail()).getPhoto(),musician4.getEmail());
         List<BandMember> metalMember = new ArrayList<>();
+        BandMember member3 = new BandMember(musician5.getName(),musician5.getInstruments(),musicianProfileMap.get(musician5.getEmail()).getPhoto(),musician5.getEmail());
+        List<BandMember> singerMember = new ArrayList<>();
         metalMember.add(member2);
-        BandRequest bandRequest1 = new BandRequest(bandRequestInstruments, "Rock",bandMembers, "The Firestorm", "https://image.freepik.com/fotos-gratis/inspiracao-banda-de-musicos-tocando-juntos-no-local-de-trabalho-de-arte-com-instrumentos_155003-16972.jpg");
-        BandRequest bandRequest2 = new BandRequest(bandRequestInstruments, "Metal",metalMember,"Doom","https://static.vecteezy.com/system/resources/previews/003/516/797/non_2x/fire-doom-rain-free-photo.jpeg");
+        singerMember.add(member3);
+        BandRequest bandRequest1 = new BandRequest(bandRequestInstruments1, "Rock",bandMembers, "The Firestorm", "https://image.freepik.com/fotos-gratis/inspiracao-banda-de-musicos-tocando-juntos-no-local-de-trabalho-de-arte-com-instrumentos_155003-16972.jpg");
+        BandRequest bandRequest2 = new BandRequest(bandRequestInstruments1, "Metal",metalMember,"Doom","https://static.vecteezy.com/system/resources/previews/003/516/797/non_2x/fire-doom-rain-free-photo.jpeg");
+        BandRequest bandRequest3 = new BandRequest(bandRequestInstruments2,"Classical",singerMember,"Bright April","https://image.freepik.com/fotos-gratis/notas-musicais-em-partituras-em-partituras_144627-16357.jpg");
         bandRequestList.add(bandRequest1);
         bandRequestList.add(bandRequest2);
-
+        bandRequestList.add(bandRequest3);
         return bandRequestList;
     }
 

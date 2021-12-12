@@ -166,7 +166,7 @@
                     android:id="@+id/edit_photo"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:src="@drawable/person"
+                    android:src="@drawable/image"
                     app:civ_border_color="@color/black"
                     app:civ_border_width="2dp" />
 
