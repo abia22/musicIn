@@ -66,7 +66,7 @@ public class BandRequestDialog extends DialogFragment {
         }
 
         builder.setView(view)
-                .setTitle("Choose Instrument")
+                .setTitle("Choose the instrument you're going to play for this band")
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
