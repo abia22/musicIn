@@ -49,6 +49,16 @@ public class BandRequestActivity extends AppCompatActivity {
         DividerItemDecoration divider = new DividerItemDecoration(getApplicationContext(), LinearLayoutManager.VERTICAL);
         membersRv.addItemDecoration(divider);
 
+        adapter.setOnItemClickListener(new BandMembersAdapter.OnItemClickListener() {
+            @Override
+            public void OnItemClick(int position) {
+                Intent intent = new Intent(BandRequestActivity.this,MusicianProfileActivity.class);
+                intent.putExtra("request",false);
+                intent.putExtra("email",email);
+                startActivity(intent);
+            }
+        });
+
 
         request.setOnClickListener(new View.OnClickListener() {
             @Override
