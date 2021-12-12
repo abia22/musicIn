@@ -38,7 +38,10 @@ public class BandRequestActivity extends AppCompatActivity {
         Picasso.get().load(br.getPhoto()).into(bandPhoto);
         TextView bandGenre = findViewById(R.id.bandGenre);
         bandName.setText(br.getName());
-        br.getInstruments().forEach(i -> instruments = instruments + " " + i);
+        instruments = br.getInstruments().get(0);
+        for(int i = 1; i < br.getInstruments().size(); i++){
+            instruments = instruments + ", " + br.getInstruments().get(i);
+        }
         instrumentList.setText(instruments);
         bandGenre.setText(br.getGenre());
 

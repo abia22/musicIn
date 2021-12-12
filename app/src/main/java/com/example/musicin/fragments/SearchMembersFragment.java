@@ -85,7 +85,7 @@ public class SearchMembersFragment extends Fragment {
         members_rv.setLayoutManager(gridLayoutManager);
         members_rv.setAdapter(memberAdapter);
 
-        FloatingActionButton add_request_bttn = view.findViewById(R.id.add_request_fab);
+        MaterialButton add_request_bttn = view.findViewById(R.id.add_request_fab);
         add_request_bttn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

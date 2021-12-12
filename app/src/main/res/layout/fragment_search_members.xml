@@ -69,18 +69,17 @@
     </LinearLayout>
 
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <com.google.android.material.button.MaterialButton
+        android:text="Add new Band"
         android:id="@+id/add_request_fab"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="35dp"
-        android:src="@drawable/add"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:maxImageSize="30dp" />
+        app:layout_constraintEnd_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/data_list_members"

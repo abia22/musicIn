@@ -4,7 +4,7 @@
     <item
         android:id="@+id/nav_search_members"
         android:icon="@drawable/person"
-        android:title="Band Requests"/>
+        android:title="Search Bands To Join"/>
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/home"
