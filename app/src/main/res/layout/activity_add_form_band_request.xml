@@ -130,7 +130,9 @@
                     android:ems="10"
                     android:hint="@string/enter_instrument_here"
                     android:inputType="text"
-                    android:maxLines="1" />
+                    android:maxLines="1"
+                    android:completionThreshold="1"
+                    />
 
                 <ImageView
                     android:id="@+id/add_item"
@@ -211,7 +213,7 @@
                     android:completionThreshold="1"
                     android:ems="10"
                     android:hint="@string/enter_member_here"
-                    android:inputType="textAutoCorrect"
+                    android:inputType="text"
                     android:maxLines="1" />
 
                 <ImageView

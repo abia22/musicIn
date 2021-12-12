@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.musicin.R;
 import com.example.musicin.adapters.SearchEventAdapter;
+import com.example.musicin.data.Band;
 import com.example.musicin.data.BandMember;
 import com.squareup.picasso.Picasso;
 
@@ -88,5 +89,9 @@ public class BandMembersAdapter extends RecyclerView.Adapter<BandMembersAdapter.
                 }
             });
         }
+    }
+
+    public BandMember getMember(int position) {
+        return memberList.get(position);
     }
 }

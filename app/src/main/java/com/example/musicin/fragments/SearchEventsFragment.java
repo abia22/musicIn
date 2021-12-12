@@ -1,14 +1,20 @@
 package com.example.musicin.fragments;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -38,20 +44,36 @@ public class SearchEventsFragment extends Fragment {
     String genreFilter;
     String dateFilter;
     MaterialButton genres;
+    SearchEventAdapter searchEventAdapter;
+    SwitchMaterial switchLocation;
+    Data data;
+
+    private ActivityResultLauncher<String> requestPermissionLauncher =
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+                if (isGranted) {
+                    switchLocation.setEnabled(true);
+                    location = true;
+                    events = data.applyFilter(payment,location,genreFilter,dateFilter);
+                    searchEventAdapter.setItems(events);
+                } else {
+                    Toast toast = Toast.makeText(getContext(), "Permission is necessary in order to get your location to use for this filter", Toast.LENGTH_LONG);
+                    toast.show();
+                }
+            });
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search_events, container, false);
 
-        Data data = Data.getInstance();
+        data = Data.getInstance();
 
         Bundle bundle = getArguments();
         String email = bundle.getString("email");
 
         SwitchMaterial switchPayment = view.findViewById(R.id.payment_event);
         payment = false;
-        SwitchMaterial switchLocation = view.findViewById(R.id.location_event);
+        switchLocation = view.findViewById(R.id.location_event);
         location = false;
         MaterialButton date = view.findViewById(R.id.date_event);
         dateFilter = null;
@@ -61,7 +83,7 @@ public class SearchEventsFragment extends Fragment {
         RecyclerView events_rv = view.findViewById(R.id.data_list);
         events_rv.setHasFixedSize(false);
         events = data.getAllEvents();
-        SearchEventAdapter searchEventAdapter = new SearchEventAdapter(view.getContext(),events);
+        searchEventAdapter = new SearchEventAdapter(view.getContext(),events);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(view.getContext(),2,GridLayoutManager.VERTICAL,false);
         events_rv.setLayoutManager(gridLayoutManager);
         events_rv.setAdapter(searchEventAdapter);
@@ -87,9 +109,16 @@ public class SearchEventsFragment extends Fragment {
         switchLocation.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                location = isChecked;
-                events = data.applyFilter(payment,location,genreFilter,dateFilter);
-                searchEventAdapter.setItems(events);
+                if (ContextCompat.checkSelfPermission(
+                        getContext(), Manifest.permission.ACCESS_FINE_LOCATION) ==
+                        PackageManager.PERMISSION_GRANTED) {
+                    location = isChecked;
+                    events = data.applyFilter(payment,location,genreFilter,dateFilter);
+                    searchEventAdapter.setItems(events);
+                } else {
+                    requestPermissionLauncher.launch(
+                            Manifest.permission.ACCESS_FINE_LOCATION);
+                }
             }
         });
 

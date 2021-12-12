@@ -54,7 +54,7 @@ public class BandRequestActivity extends AppCompatActivity {
             public void OnItemClick(int position) {
                 Intent intent = new Intent(BandRequestActivity.this,MusicianProfileActivity.class);
                 intent.putExtra("request",false);
-                intent.putExtra("email",email);
+                intent.putExtra("email",adapter.getMember(position).getEmail());
                 startActivity(intent);
             }
         });

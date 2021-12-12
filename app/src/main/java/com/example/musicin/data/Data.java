@@ -198,10 +198,10 @@ public class Data {
         List<BandMember> bandMembers = new ArrayList<>();
         BandMember member1 = new BandMember("Bob Stuart","Guitar","https://image.freepik.com/free-photo/guitarist-plays-electric-guitar-with-bright-emotions-grey-background_186202-4755.jpg","bob@mail.com");
         bandMembers.add(member1);
-        BandMember member2 = new BandMember(musician2.getName(),musician2.getInstruments(),musicianProfileMap.get(musician2.getEmail()).getPhoto(),musician2.getEmail());
+        BandMember member2 = new BandMember(musician4.getName(),musician4.getInstruments(),musicianProfileMap.get(musician4.getEmail()).getPhoto(),musician4.getEmail());
         List<BandMember> metalMember = new ArrayList<>();
         metalMember.add(member2);
-        BandRequest bandRequest1 = new BandRequest(bandRequestInstruments, "Rock",bandMembers, "Fire", "https://image.freepik.com/fotos-gratis/inspiracao-banda-de-musicos-tocando-juntos-no-local-de-trabalho-de-arte-com-instrumentos_155003-16972.jpg");
+        BandRequest bandRequest1 = new BandRequest(bandRequestInstruments, "Rock",bandMembers, "The Firestorm", "https://image.freepik.com/fotos-gratis/inspiracao-banda-de-musicos-tocando-juntos-no-local-de-trabalho-de-arte-com-instrumentos_155003-16972.jpg");
         BandRequest bandRequest2 = new BandRequest(bandRequestInstruments, "Metal",metalMember,"Doom","https://static.vecteezy.com/system/resources/previews/003/516/797/non_2x/fire-doom-rain-free-photo.jpeg");
         bandRequestList.add(bandRequest1);
         bandRequestList.add(bandRequest2);

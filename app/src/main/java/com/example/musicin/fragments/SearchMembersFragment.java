@@ -100,7 +100,7 @@ public class SearchMembersFragment extends Fragment {
                BandRequest request  = memberAdapter.getRequest(position);
                Intent intent = new Intent(getActivity(), BandRequestActivity.class);
                intent.putExtra("Request",request);
-               intent.putExtra("email",request.getMembers().get(position).getEmail());
+               intent.putExtra("email",email);
                startActivity(intent);
             }
         });
