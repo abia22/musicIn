@@ -76,6 +76,8 @@ public class EventRequestActivity extends AppCompatActivity {
                         String chosenBand = result.getString("bundleKey");
                         if(!chosenBand.equals("")){
                             //TODO: ADD REQUEST TO MUSICIAN IN DATA
+                            Toast toast = Toast.makeText(getApplicationContext(), "Request sent!", Toast.LENGTH_SHORT);
+                            toast.show();
                             finish();
                         }
                     }

@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.musicin.adapters.BandMembersAdapter;
 import com.example.musicin.data.BandRequest;
@@ -86,6 +87,8 @@ public class BandRequestActivity extends AppCompatActivity {
                 String chosenInstrument = result.getString("bundleKey");
                 if(!chosenInstrument.equals("")){
                     //TODO: ADD REQUEST TO MUSICIAN IN DATA
+                    Toast toast = Toast.makeText(getApplicationContext(), "Request sent!", Toast.LENGTH_SHORT);
+                    toast.show();
                     finish();
                 }
             }

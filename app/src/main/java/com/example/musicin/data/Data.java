@@ -192,7 +192,6 @@ public class Data {
         bandRequestList.clear();
         List<String> bandRequestInstruments1 = new ArrayList<>();
         bandRequestInstruments1.add("Guitar");
-        bandRequestInstruments1.add("Drums");
         bandRequestInstruments1.add("Singer");
         List<String> bandRequestInstruments2 = new ArrayList<>();
         bandRequestInstruments2.add("Bass guitar");

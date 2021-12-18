@@ -105,14 +105,18 @@ public class HomeFragment extends Fragment {
         bandsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         bands_sp.setAdapter(bandsAdapter);
 
+        TextView bandName_tv = view.findViewById(R.id.members_txt);
+
+        members_rv.addItemDecoration(divider);
+
         bands_sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if(!bandNames.get(i).equals("No Bands Formed Yet")) {
+                    bandName_tv.setText(bandNames.get(i) + " Members:");
                     membersAdapter = new BandMembersAdapter(bandList.get(i).getMembers());
                     members_rv.setAdapter(membersAdapter);
                     members_rv.setLayoutManager(new LinearLayoutManager(getContext()));
-                    members_rv.addItemDecoration(divider);
                     membersAdapter.setOnItemClickListener(new BandMembersAdapter.OnItemClickListener() {
                         @Override
                         public void OnItemClick(int position) {
