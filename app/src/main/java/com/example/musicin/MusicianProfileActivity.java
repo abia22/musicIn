@@ -36,6 +36,14 @@ public class MusicianProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_musician_profile);
 
+        ImageView back_arrow = findViewById(R.id.back_arrow);
+        back_arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         Data data = Data.getInstance();
 
         Intent intent = getIntent();

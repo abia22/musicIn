@@ -70,6 +70,14 @@ public class AddFormBandRequestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_form_band_request);
 
+        ImageView back_arrow = findViewById(R.id.back_arrow);
+        back_arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         Data data = Data.getInstance();
 
         TextInputEditText name_ed_txt = findViewById(R.id.band_input_txt);

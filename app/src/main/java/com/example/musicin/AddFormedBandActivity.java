@@ -39,6 +39,14 @@ public class AddFormedBandActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_formed_band);
 
+        ImageView back_arrow = findViewById(R.id.back_arrow);
+        back_arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         Data data = Data.getInstance();
 
         TextInputEditText bandName_ed_txt = findViewById(R.id.band_name_ed_txt);

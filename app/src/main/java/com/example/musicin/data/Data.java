@@ -151,7 +151,7 @@ public class Data {
         return eventsList;
     }
 
-    public List<Event> applyFilter(boolean payment,boolean location,String genre,String date){
+    public List<Event> applyFilter(boolean payment,boolean location,String genre,String date, boolean notPaid){
         List<Event> filteredEvents = new ArrayList<>();
         filteredEvents.addAll(getAllEvents());
         if(payment){
@@ -168,6 +168,10 @@ public class Data {
 
         if(location){
             filteredEvents.sort(Comparator.comparing(Event::getDistance));
+        }
+
+        if (notPaid) {
+            filteredEvents = filteredEvents.stream().filter(event -> event.getPayment() == 0 ).collect(Collectors.toList());
         }
         return filteredEvents;
 

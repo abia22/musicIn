@@ -39,7 +39,8 @@ import java.util.List;
 
 public class SearchEventsFragment extends Fragment {
     private List<Event>events = new ArrayList<>();
-    boolean payment;
+    boolean paid;
+    boolean notPaid;
     boolean location;
     String genreFilter;
     String dateFilter;
@@ -53,7 +54,7 @@ public class SearchEventsFragment extends Fragment {
                 if (isGranted) {
                     switchLocation.setEnabled(true);
                     location = true;
-                    events = data.applyFilter(payment,location,genreFilter,dateFilter);
+                    events = data.applyFilter(paid,location,genreFilter,dateFilter, notPaid);
                     searchEventAdapter.setItems(events);
                 } else {
                     Toast toast = Toast.makeText(getContext(), "Permission is necessary in order to get your location to use for this filter", Toast.LENGTH_LONG);
@@ -72,7 +73,9 @@ public class SearchEventsFragment extends Fragment {
         String email = bundle.getString("email");
 
         SwitchMaterial switchPayment = view.findViewById(R.id.payment_event);
-        payment = false;
+        paid = false;
+        SwitchMaterial switchNotPaid = view.findViewById(R.id.not_paid_event);
+        notPaid = false;
         switchLocation = view.findViewById(R.id.location_event);
         location = false;
         MaterialButton date = view.findViewById(R.id.date_event);
@@ -97,15 +100,38 @@ public class SearchEventsFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
         switchPayment.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                payment = isChecked;
+                if (switchNotPaid.isEnabled())
+                    switchNotPaid.setEnabled(false);
+                else
+                    switchNotPaid.setEnabled(true);
+                notPaid = false;
+                paid = isChecked;
                 List<Event> eventListFiltered;
-                eventListFiltered = data.applyFilter(payment,location,genreFilter,dateFilter);
+                eventListFiltered = data.applyFilter(paid,location,genreFilter,dateFilter, notPaid);
+                searchEventAdapter.setItems(eventListFiltered);
+
+            }
+        });
+
+        switchNotPaid.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (switchPayment.isEnabled())
+                    switchPayment.setEnabled(false);
+                else
+                    switchPayment.setEnabled(true);
+                paid = false;
+                notPaid = isChecked;
+                List<Event> eventListFiltered;
+                eventListFiltered = data.applyFilter(paid,location,genreFilter,dateFilter, notPaid);
                 searchEventAdapter.setItems(eventListFiltered);
             }
         });
+
         switchLocation.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -113,7 +139,7 @@ public class SearchEventsFragment extends Fragment {
                         getContext(), Manifest.permission.ACCESS_FINE_LOCATION) ==
                         PackageManager.PERMISSION_GRANTED) {
                     location = isChecked;
-                    events = data.applyFilter(payment,location,genreFilter,dateFilter);
+                    events = data.applyFilter(paid,location,genreFilter,dateFilter, notPaid);
                     searchEventAdapter.setItems(events);
                 } else {
                     requestPermissionLauncher.launch(
@@ -147,7 +173,7 @@ public class SearchEventsFragment extends Fragment {
                 dateFilter = materialDatePicker.getHeaderText();
                 date.setText(dateFilter);
                 List<Event> eventListFiltered;
-                eventListFiltered = data.applyFilter(payment,location,genreFilter,dateFilter);
+                eventListFiltered = data.applyFilter(paid,location,genreFilter,dateFilter, notPaid);
                 searchEventAdapter.setItems(eventListFiltered);
 
             }
@@ -165,7 +191,7 @@ public class SearchEventsFragment extends Fragment {
                         genreFilter = result.getString("bundleKey");
                         genres.setText(genreFilter);
                         List<Event> eventListFiltered;
-                        eventListFiltered = data.applyFilter(payment,location,genreFilter,dateFilter);
+                        eventListFiltered = data.applyFilter(paid,location,genreFilter,dateFilter, notPaid);
                         searchEventAdapter.setItems(eventListFiltered);
                     }
                 });

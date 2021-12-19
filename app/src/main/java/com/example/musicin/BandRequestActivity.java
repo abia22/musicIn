@@ -30,6 +30,14 @@ public class BandRequestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_band_request);
 
+        ImageView back_arrow = findViewById(R.id.back_arrow);
+        back_arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         MaterialButton request = findViewById(R.id.requestJoinBand_bttn);
         BandRequest br = getIntent().getParcelableExtra("Request");
         email = getIntent().getStringExtra("email");
